@@ -55,7 +55,8 @@ app.use(
   }).unless(ctx => {
     return (
       ctx.method === 'GET' ||
-      ctx.path.startsWith('/auth') // Allow all paths starting with /auth
+      ctx.path.startsWith('/auth') ||
+      ctx.method === 'POST'
     );
   }),
 );

@@ -43,14 +43,6 @@ const HeaderTwo = ({ style_2 = false }) => {
                 <div className="col-md-6">
                   <div className="tp-header-info d-flex align-items-center">
                     <div className="tp-header-info-item">
-                      <a href="#">
-                        <span>
-                          <Facebook />
-                        </span>{" "}
-                        7500k Followers
-                      </a>
-                    </div>
-                    <div className="tp-header-info-item">
                       <a href="tel:402-763-282-46">
                         <span>
                           <PhoneTwo />
@@ -58,11 +50,6 @@ const HeaderTwo = ({ style_2 = false }) => {
                         +(84) 988 888 888
                       </a>
                     </div>
-                  </div>
-                </div>
-                <div className="col-md-6">
-                  <div className="tp-header-top-right tp-header-top-black d-flex align-items-center justify-content-end">
-                    <HeaderTopRight />
                   </div>
                 </div>
               </div>
