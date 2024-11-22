@@ -43,10 +43,7 @@ export const PRODUCT_STATUSES = {
 };
 
 export const PRODUCT_TYPES = {
-  ELECTRONICS: 'electronics',
-  FASHION: 'fashion',
   BEAUTY: 'beauty',
-  JEWELRY: 'jewelry',
 };
 
 export const SIZES = {
