@@ -92,22 +92,10 @@ const Menus = () => {
                   ))}
                 </div>
               </div>
-              {/* <div className="tp-product-arrival-slider fix">
-    {content}
-  </div> */}
-              {/* <OfferCouponArea/> */}
               <div className="row row-cols-1 row-cols-lg-4 row-cols-xl-4">
                 {menu.home_pages.map((home, i) => (
                   <div key={i} className="col">
                     <div className="home-menu-item">
-                      {/* <Link href={home.link}>
-                        <div className="home-menu-thumb p-relative fix">
-                          <Image src={home.img} alt="home img" />
-                        </div>
-                        <div className="home-menu-content">
-                          <h5 className="home-menu-title">{home.title}</h5>
-                        </div>
-                      </Link> */}
                     </div>
                   </div>
                 ))}

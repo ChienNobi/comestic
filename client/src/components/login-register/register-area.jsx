@@ -1,9 +1,7 @@
 import React from "react";
 import Link from "next/link";
-// internal
 import LoginShapes from "./login-shapes";
 import RegisterForm from "../forms/register-form";
-import GoogleSignUp from "./google-sign-up";
 
 const RegisterArea = () => {
   return (
@@ -15,21 +13,16 @@ const RegisterArea = () => {
             <div className="col-xl-6 col-lg-8">
               <div className="tp-login-wrapper">
                 <div className="tp-login-top text-center mb-30">
-                  <h3 className="tp-login-title">Sign Up CH-Store.</h3>
+                  <h3 className="tp-login-title">Đăng Ký CH-Store.</h3>
                   <p>
-                    Already have an account?{" "}
+                    Bạn đã có tài khoản?{" "}
                     <span>
-                      <Link href="/login">Sign In</Link>
+                      <Link href="/login">Đăng nhập ngay</Link>
                     </span>
                   </p>
                 </div>
                 <div className="tp-login-option">
-                  <div className="tp-login-mail text-center mb-40">
-                    <p>or Sign up with Email</p>
-                  </div>
-                  {/* form start */}
                   <RegisterForm />
-                  {/* form end */}
                 </div>
               </div>
             </div>

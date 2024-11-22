@@ -13,20 +13,15 @@ const LoginArea = () => {
             <div className="col-xl-6 col-lg-8">
               <div className="tp-login-wrapper">
                 <div className="tp-login-top text-center mb-30">
-                  <h3 className="tp-login-title">Login to TH-Store.</h3>
+                  <h3 className="tp-login-title">Đăng nhập vào CH-Store.</h3>
                   <p>
-                    Don’t have an account?{" "}
+                    Bạn chưa có tài khoản?{" "}
                     <span>
-                      <Link href="/register">Create a free account</Link>
+                      <Link href="/register">Tạo tài khoản ngay</Link>
                     </span>
                   </p>
                 </div>
                 <div className="tp-login-option">
-                  <div className="tp-login-mail text-center mb-40">
-                    <p>
-                      or Sign in with <a href="#">Email</a>
-                    </p>
-                  </div>
                   <LoginForm />
                 </div>
               </div>

@@ -3,13 +3,11 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { useRouter } from "next/router";
-// internal
 import { CloseEye, OpenEye } from "@/svg";
 import ErrorMsg from "../common/error-msg";
 import { notifyError, notifySuccess } from "@/utils/toast";
 import { useRegisterUserMutation } from "@/redux/features/auth/authApi";
 
-// schema
 const schema = Yup.object().shape({
   name: Yup.string().required().label("Name"),
   email: Yup.string().required().email().label("Email"),
@@ -41,7 +39,7 @@ const RegisterForm = () => {
       password: data.password,
     }).then((result) => {
       if (result?.error) {
-        notifyError("Register Failed");
+        notifyError("Đăng ký thất bại");
       } else {
         notifySuccess(result?.data?.message);
 
@@ -56,22 +54,22 @@ const RegisterForm = () => {
         <div className="tp-login-input-box">
           <div className="tp-login-input">
             <input
-              {...register("name", { required: `Name is required!` })}
+              {...register("name", { required: `Vui lòng nhập vào họ và tên!` })}
               id="name"
               name="name"
               type="text"
-              placeholder="John Dan"
+              placeholder="Họ và tên"
             />
           </div>
           <div className="tp-login-input-title">
-            <label htmlFor="name">Your Name</label>
+            <label htmlFor="name">Họ và tên</label>
           </div>
           <ErrorMsg msg={errors.name?.message} />
         </div>
         <div className="tp-login-input-box">
           <div className="tp-login-input">
             <input
-              {...register("email", { required: `Email is required!` })}
+              {...register("email", { required: `Vui lòng nhập vào Email!` })}
               id="email"
               name="email"
               type="email"
@@ -79,7 +77,7 @@ const RegisterForm = () => {
             />
           </div>
           <div className="tp-login-input-title">
-            <label htmlFor="email">Your Email</label>
+            <label htmlFor="email">Email</label>
           </div>
           <ErrorMsg msg={errors.email?.message} />
         </div>
@@ -87,7 +85,7 @@ const RegisterForm = () => {
           <div className="p-relative">
             <div className="tp-login-input">
               <input
-                {...register("password", { required: `Password is required!` })}
+                {...register("password", { required: `Vui lòng nhập vào mật khẩu!` })}
                 id="password"
                 name="password"
                 type={showPass ? "text" : "password"}
@@ -100,7 +98,7 @@ const RegisterForm = () => {
               </span>
             </div>
             <div className="tp-login-input-title">
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">Mật khẩu</label>
             </div>
           </div>
           <ErrorMsg msg={errors.password?.message} />
@@ -110,14 +108,14 @@ const RegisterForm = () => {
         <div className="tp-login-remeber">
           <input
             {...register("remember", {
-              required: `Terms and Conditions is required!`,
+              required: `Vui lòng chấp nhận điều khoản dịch vụ!`,
             })}
             id="remember"
             name="remember"
             type="checkbox"
           />
           <label htmlFor="remember">
-            I accept the terms of the Service & <a href="#">Privacy Policy</a>.
+            Tôi chấp nhận các điều khoản của Dịch vụ & <a href="#">Chính sách bảo mật</a>.
           </label>
           <ErrorMsg msg={errors.remember?.message} />
         </div>
