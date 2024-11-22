@@ -8,7 +8,7 @@ const StatusFilter = ({setCurrPage,shop_right=false}) => {
   const dispatch = useDispatch();
   const status = ["On sale", "In Stock"];
 
-  // handle status route 
+  // handle status route
   const handleStatusRoute = (status) => {
     setCurrPage(1)
     router.push(
@@ -22,7 +22,7 @@ const StatusFilter = ({setCurrPage,shop_right=false}) => {
   }
   return (
     <div className="tp-shop-widget mb-50">
-      <h3 className="tp-shop-widget-title">Product Status</h3>
+      <h3 className="tp-shop-widget-title">Trạng thái sản phẩm</h3>
       <div className="tp-shop-widget-content">
         <div className="tp-shop-widget-checkbox">
           <ul className="filter-items filter-checkbox">

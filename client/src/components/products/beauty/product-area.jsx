@@ -40,7 +40,7 @@ const ProductArea = () => {
           <div className="row align-items-end">
             <div className="col-lg-6 col-md-8">
               <div className="tp-section-title-wrapper-3 mb-55">
-                <span className="tp-section-title-pre-3">Shop by Category</span>
+                <span className="tp-section-title-pre-3">Sản phẩm theo danh mục</span>
                 <h3 className="tp-section-title-3">Best sellers in beauty</h3>
               </div>
             </div>

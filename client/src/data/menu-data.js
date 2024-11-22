@@ -7,35 +7,13 @@ const menu_data = [
   {
     id: 1,
     homes: true,
-    title: 'Home',
+    title: 'Trang chủ',
     link: '/',
-    home_pages: [
-      {
-        img: home_1,
-        title: 'Electronics',
-        link: '/'
-      },
-      {
-        img: home_2,
-        title: 'Fashion',
-        link: '/home-2'
-      },
-      {
-        img: home_3,
-        title: 'Beauty',
-        link: '/home-3'
-      },
-      {
-        img: home_4,
-        title: 'Jewelry',
-        link: '/home-4'
-      }
-    ]
   },
   {
     id: 2,
     products: true,
-    title: 'Products',
+    title: 'Sản phẩm',
     link: '/shop',
     product_pages: [
       {
@@ -74,7 +52,7 @@ const menu_data = [
   {
     id: 6,
     single_link: true,
-    title: 'Contact',
+    title: 'Liên hệ',
     link: '/contact',
   },
 ]

@@ -96,8 +96,8 @@ export default function SearchPage({ query }) {
                           <div className="tp-shop-top-left d-flex align-items-center ">
                             <div className="tp-shop-top-result">
                               <p>
-                                Showing 1–{product_items.length} of{" "}
-                                {all_products.length} results
+                                Hiển thị 1–{product_items.length} of{" "}
+                                {all_products.length} kết quả
                               </p>
                             </div>
                           </div>
@@ -169,7 +169,7 @@ export default function SearchPage({ query }) {
     <Wrapper>
       <SEO pageTitle="Wishlist" />
       <HeaderTwo style_2={true} />
-      <CommonBreadcrumb title="Search Products" subtitle="Search Products" />
+      <CommonBreadcrumb title="Tìm kiếm sản phẩm" subtitle="Tìm kiếm sản phẩm" />
       {content}
       <Footer primary_style={true} />
     </Wrapper>

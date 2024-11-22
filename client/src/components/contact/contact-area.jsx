@@ -15,7 +15,7 @@ const ContactArea = () => {
             <div className="row">
               <div className="col-xl-9 col-lg-8">
                 <div className="tp-contact-wrapper">
-                  <h3 className="tp-contact-title">Sent A Message</h3>
+                  <h3 className="tp-contact-title">Nếu bạn cần giúp đỡ hãy để lại lời nhắn</h3>
 
                   <div className="tp-contact-form">
                     {/* form start */}

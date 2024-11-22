@@ -81,7 +81,7 @@ const BlogSidebar = () => {
 
         {/* <!-- categories start --> */}
         <div className="tp-sidebar-widget widget_categories mb-35">
-          <h3 className="tp-sidebar-widget-title">Categories</h3>
+          <h3 className="tp-sidebar-widget-title">Danh mục</h3>
           <div className="tp-sidebar-widget-content">
             <ul>
               <li><Link href="/blog">Farming <span>(12)</span></Link></li>

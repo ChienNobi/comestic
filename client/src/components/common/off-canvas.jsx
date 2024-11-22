@@ -58,7 +58,7 @@ const OffCanvas = ({
                 className="tp-offcanvas-category-toggle"
               >
                 <i className="fa-solid fa-bars"></i>
-                All Categories
+                Tắt cả danh mục
               </button>
               <div className="tp-category-mobile-menu">
                 <nav

@@ -1,25 +1,12 @@
 import React from "react";
 import menu_data from "@/data/menu-data";
 import Link from "next/link";
-import Image from "next/image";
 import { useGetProductTypeQuery } from "@/redux/features/productApi";
 import { HomeNewArrivalPrdLoader } from "@/components/loader";
 import ErrorMsg from "@/components/common/error-msg";
 import ProductItem from "@/components/products/electronics/product-item";
 
-// internal
-import insta_1 from "@assets/img/instagram/3/instagram-1.jpg";
-import insta_3 from "@assets/img/instagram/3/instagram-3.jpg";
-import insta_5 from "@assets/img/instagram/3/instagram-5.jpg";
-import insta_6 from "@assets/img/instagram/3/instagram-6.jpg";
 
-// instagram data
-const instagram_data = [
-  { id: 1, link: "https://www.instagram.com/", img: insta_1 },
-  { id: 2, link: "https://www.instagram.com/", img: insta_3 },
-  { id: 3, link: "https://www.instagram.com/", img: insta_5 },
-  { id: 4, link: "https://www.instagram.com/", img: insta_6 },
-];
 const Menus = () => {
   const {
     data: products,
@@ -64,43 +51,10 @@ const Menus = () => {
   return (
     <ul>
       {menu_data.map((menu) =>
+
         menu.homes ? (
-          <li key={menu.id} className="has-dropdown has-mega-menu">
+          <li key={menu.id}>
             <Link href={menu.link}>{menu.title}</Link>
-            <div className="home-menu tp-submenu tp-mega-menu">
-              <div className="container-fluid">
-                <div className="row row-cols-lg-4 row-cols-sm-2 row-cols-1 gx-2 gy-2 gy-lg-0">
-                  {instagram_data.map((item) => (
-                    <div className="col" key={item.id}>
-                      <div className="tp-instagram-item-2">
-                        <Image
-                          src={item.img}
-                          alt="instagram img"
-                          style={{ width: "100%", height: "100%" }}
-                        />
-                        <div className="tp-instagram-icon-2">
-                          <a
-                            href={item.link}
-                            target="_blank"
-                            className="popup-image"
-                          >
-                            <i className="fa-brands fa-instagram"></i>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="row row-cols-1 row-cols-lg-4 row-cols-xl-4">
-                {menu.home_pages.map((home, i) => (
-                  <div key={i} className="col">
-                    <div className="home-menu-item">
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
           </li>
         ) : menu.products ? (
           <li key={menu.id} className="has-dropdown has-mega-menu ">

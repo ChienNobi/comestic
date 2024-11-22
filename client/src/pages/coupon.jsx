@@ -11,7 +11,7 @@ const CouponPage = () => {
     <Wrapper>
       <SEO pageTitle="Coupon" />
       <HeaderTwo style_2={true} />
-      <CommonBreadcrumb title="Grab Best Offer" subtitle="Coupon" />
+      <CommonBreadcrumb title="Mã giảm giá" subtitle="Coupon" />
       <CouponArea/>
       <Footer primary_style={true} />
     </Wrapper>

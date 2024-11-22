@@ -9,7 +9,6 @@ import ShopTopRatedLoader from "@/components/loader/shop/top-rated-prd-loader";
 
 const TopRatedProducts = () => {
   const { data: products, isError, isLoading } = useGetTopRatedProductsQuery();
-  // decide what to render
   let content = null;
 
   if (isLoading) {
@@ -61,7 +60,7 @@ const TopRatedProducts = () => {
   return (
     <>
       <div className="tp-shop-widget mb-50">
-        <h3 className="tp-shop-widget-title">Top Rated Products</h3>
+        <h3 className="tp-shop-widget-title">Sản phẩm phổ biến</h3>
         <div className="tp-shop-widget-content">
           <div className="tp-shop-widget-product">{content}</div>
         </div>

@@ -54,7 +54,7 @@ const Footer = ({
               </div>
               <div className="col-xl-2 col-lg-3 col-md-4 col-sm-6">
                 <div className="tp-footer-widget footer-col-2 mb-50">
-                  <h4 className="tp-footer-widget-title">My Account</h4>
+                  <h4 className="tp-footer-widget-title">Tài khoản của tôi</h4>
                   <div className="tp-footer-widget-content">
                     <ul>
                       <li>
@@ -64,16 +64,16 @@ const Footer = ({
                         <a href="#">Shipping</a>
                       </li>
                       <li>
-                        <a href="#">Wishlist</a>
+                        <a href="/wishlist">Wishlist</a>
                       </li>
                       <li>
-                        <a href="#">My Account</a>
+                        <a href="#">Tài khoản của tôi</a>
                       </li>
                       <li>
-                        <a href="#">Order History</a>
+                        <a href="#">Lịch sửa đặt hàng</a>
                       </li>
                       <li>
-                        <a href="#">Returns</a>
+                        <a href="#">Chính sách trả hàng</a>
                       </li>
                     </ul>
                   </div>
@@ -81,12 +81,9 @@ const Footer = ({
               </div>
               <div className="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                 <div className="tp-footer-widget footer-col-3 mb-50">
-                  <h4 className="tp-footer-widget-title">Information</h4>
+                  <h4 className="tp-footer-widget-title">Thông tin</h4>
                   <div className="tp-footer-widget-content">
                     <ul>
-                      <li>
-                        <a href="#">Our Story</a>
-                      </li>
                       <li>
                         <a href="#">Careers</a>
                       </li>
@@ -100,7 +97,7 @@ const Footer = ({
                         <a href="#">Latest News</a>
                       </li>
                       <li>
-                        <a href="#">Contact Us</a>
+                        <a href="/contact">Liên hệ với chúng tôi</a>
                       </li>
                     </ul>
                   </div>
@@ -108,10 +105,9 @@ const Footer = ({
               </div>
               <div className="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                 <div className="tp-footer-widget footer-col-4 mb-50">
-                  <h4 className="tp-footer-widget-title">Talk To Us</h4>
+                  <h4 className="tp-footer-widget-title">Gọi cho chúng tôi ngay</h4>
                   <div className="tp-footer-widget-content">
                     <div className="tp-footer-talk mb-20">
-                      <span>Got Questions? Call us</span>
                       <h4>
                         <a href="tel:0988-888-888">+84 988 888 888</a>
                       </h4>

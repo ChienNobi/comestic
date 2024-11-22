@@ -54,7 +54,7 @@ const ProductBrand = ({ setCurrPage, shop_right = false }) => {
   return (
     <>
       <div className="tp-shop-widget mb-50">
-        <h3 className="tp-shop-widget-title">Popular Brands</h3>
+        <h3 className="tp-shop-widget-title">Thương hiệu phổ biến</h3>
         <div className="tp-shop-widget-content ">
           <div className="tp-shop-widget-brand-list d-flex align-items-center justify-content-between flex-wrap">
             {content}

@@ -11,7 +11,7 @@ const CategoryPage = () => {
     <Wrapper>
       <SEO pageTitle="Shop Category" />
       <HeaderTwo style_2={true} />
-      <ShopBreadcrumb title="Only Categories" subtitle="Only Categories" />
+      <ShopBreadcrumb title="Danh mục" subtitle="Danh mục" />
       <ShopCategoryArea/>
       <Footer primary_style={true} />
     </Wrapper>

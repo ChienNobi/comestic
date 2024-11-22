@@ -46,7 +46,7 @@ const ShopArea = ({ all_products, products, otherProps }) => {
                 {/* categories */}
                 <CategoryFilter setCurrPage={setCurrPage} />
                 {/* color */}
-                <ColorFilter setCurrPage={setCurrPage} />
+                {/*<ColorFilter setCurrPage={setCurrPage} />*/}
                 {/* product rating */}
                 <TopRatedProducts />
                 {/* brand */}
