@@ -77,13 +77,7 @@ const AppSider = () => {
   return (
     <Container>
       <Logo src="/logo.png" alt="Logo" />
-      <ModuleItem
-        onClick={onSelectUI}
-        selected={currentModule === APP_MODULES.UI}
-      >
-        <MdManageSearch size={20} color="white" />
-        <ModuleName>UI</ModuleName>
-      </ModuleItem>
+
       <ModuleItem
         onClick={onSelectManage}
         selected={currentModule === APP_MODULES.MANAGE}

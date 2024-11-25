@@ -136,7 +136,7 @@ const validateCoupon = (data, isAllOptional) => {
   const schema = {
     id: Joi.string().required(),
     title: Joi.string().required(),
-    logo: Joi.string().optional(),
+    logo: Joi.optional(),
     couponCode: Joi.string().required(),
     startTime: Joi.date().optional(),
     endTime: Joi.date().required(),

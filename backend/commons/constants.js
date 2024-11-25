@@ -33,6 +33,11 @@ const TABLE_ACTIONS = {
   DELETE: 'delete',
 };
 
+const ROLES = {
+  USER: 'user',
+  ADMIN: 'admin'
+}
+
 module.exports = {
   FEATURES,
   USER_STATUSES,
@@ -41,4 +46,5 @@ module.exports = {
   PHONE_REGEX,
   EMAIL_REGEX,
   TABLE_ACTIONS,
+  ROLES
 };

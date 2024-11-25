@@ -5,18 +5,16 @@ export const APP_MODULES = {
   UI: 'ui',
   MANAGE: 'manage',
   ADMIN: 'admin',
+  USER: 'user'
 };
 
 export const APP_MENU = {
-  // UI
-  UI_DASHBOARD: 'ui_dashboard',
-  // Manage
   MANAGE_PRODUCT: 'manage_product',
   MANAGE_ORDER: 'manage_order',
   MANAGE_COUPON: 'manage_coupon',
   MANAGE_CATEGORY: 'manage_category',
   MANAGE_BRAND: 'manage_brand',
-  // Admin
+
   ADMIN_EMPLOYEE: 'admin_employee',
   ADMIN_ROLE: 'admin_role',
   ADMIN_DEPARTMENT: 'admin_department',

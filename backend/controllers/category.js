@@ -10,10 +10,9 @@ exports.getAllCategories = async ctx => {
     }
     const categories = await Category.find(query);
 
-    // Add productCount and productByCategory to each category
-    const categoryData = await Promise.all(
+    ctx.body = await Promise.all(
       categories.map(async category => {
-        const products = await Product.find({ category: category.id });
+        const products = await Product.find({category: category.id});
         return {
           ...category.toObject(),
           productCount: products.length,
@@ -21,8 +20,6 @@ exports.getAllCategories = async ctx => {
         };
       }),
     );
-
-    ctx.body = categoryData;
   } catch (err) {
     ctx.throw(500, err);
   }
@@ -37,13 +34,11 @@ exports.getCategoryById = async ctx => {
 
     // Add productCount and productByCategory to the category
     const products = await Product.find({ category: category.id });
-    const categoryData = {
+    ctx.body = {
       ...category.toObject(),
       productCount: products.length,
       productByCategory: products.map(product => product.id),
     };
-
-    ctx.body = categoryData;
   } catch (err) {
     ctx.throw(500, err);
   }
@@ -79,7 +74,7 @@ exports.createCategory = async ctx => {
   try {
     const data = ctx.request.body;
     console.log(data);
-    
+
     const { error } = validateCategory(data);
     if (error) {
       ctx.throw(400, error.details[0].message);

@@ -6,13 +6,13 @@ const CheckoutLogin = () => {
   return (
     <div className="tp-checkout-verify-item">
       <p className="tp-checkout-verify-reveal">
-        Returning customer?{" "}
+        Bạn đã có tài khoản?{" "}
         <button
           onClick={() => setIsOpen(!isOpen)}
           type="button"
           className="tp-checkout-login-form-reveal-btn"
         >
-          Click here to login
+          Đăng nhập ngay
         </button>
       </p>
 

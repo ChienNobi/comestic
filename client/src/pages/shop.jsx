@@ -60,7 +60,7 @@ const ShopPage = ({ query }) => {
     );
   }
   if (!isLoading && !isError && products?.data?.length === 0) {
-    content = <ErrorMsg msg="No Products found!" />;
+    content = <ErrorMsg msg="Không tìm thấy sản phẩm!" />;
   }
   if (!isLoading && !isError && products?.data?.length > 0) {
     // products

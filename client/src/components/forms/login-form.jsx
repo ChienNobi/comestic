@@ -37,7 +37,7 @@ const LoginForm = () => {
     }).then((data) => {
       if (data?.data) {
         notifySuccess("Đăng nhập thành công");
-        router.push(redirect || "/");
+        router.push(redirect || "/")
       } else {
         notifyError(data?.error?.data?.error);
       }

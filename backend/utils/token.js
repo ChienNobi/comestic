@@ -1,18 +1,19 @@
 const jwt = require('jsonwebtoken');
+const { ROLES } = require('../commons/constants');
 // generate token
 exports.generateToken = user => {
-  const token = jwt.sign(
+  return jwt.sign(
     {
       name: user.name,
       email: user.email,
       password: user.password,
+      role: ROLES.USER
     },
     process.env.JWT_SECRET_KEY,
     {
       expiresIn: process.env.JWT_EXPIRE_TIME,
     },
   );
-  return token;
 };
 
 // generate refreshToken

@@ -1,15 +1,16 @@
 const Router = require('koa-router');
 const userController = require('../controllers/user');
+const authMiddleware = require("../middleware/auth");
 
 const router = new Router();
 
 router.get('/', userController.getAllUsers);
 router.get('/:id', userController.getUserById);
-router.post('/', userController.createUser);
-router.put('/:id', userController.updateUser);
-router.delete('/:id', userController.deleteUser);
+router.post('/', authMiddleware(), userController.createUser);
+router.put('/:id', authMiddleware(), userController.updateUser);
+router.delete('/:id', authMiddleware(), userController.deleteUser);
 // change password
-router.patch('/change-password', userController.changePassword);
+router.patch('/change-password', authMiddleware(), userController.changePassword);
 
 // auth
 router.post('/auth/register', userController.createUser);

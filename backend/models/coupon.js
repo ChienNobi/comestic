@@ -20,7 +20,7 @@ const couponSchema = new Schema(
     },
     logo: {
       type: String,
-      required: true,
+      required: false,
     },
     couponCode: {
       type: String,

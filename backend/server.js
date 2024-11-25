@@ -48,18 +48,6 @@ app.use(customJWTMiddleware);
 app.use(cors());
 app.use(responseMiddleware);
 
-app.use(
-  jwt({
-    secret: process.env.JWT_SECRET_KEY,
-    algorithm: 'RS256',
-  }).unless(ctx => {
-    return (
-      ctx.method === 'GET' ||
-      ctx.path.startsWith('/auth') ||
-      ctx.method === 'POST'
-    );
-  }),
-);
 // Routes middleware
 router.use('/api/user', userRoutes.routes());
 router.use('/api/employees', employeeRoutes.routes());

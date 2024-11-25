@@ -56,7 +56,7 @@ const ShopRightArea = ({ all_products, products, otherProps, right_side }) => {
                     </div>
                   </div>
                 </div>
-                {products.length === 0 && <h2>No products found</h2>}
+                {products.length === 0 && <h2>Không tìm thấy sản phẩm</h2>}
                 {products.length > 0 && (
                   <div className="tp-shop-items-wrapper tp-shop-item-primary">
                     <div className="tab-content" id="productTabContent">

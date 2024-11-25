@@ -36,9 +36,6 @@ const EmptyLayout = styled.div({
 
 const getContentLayout = key => {
   switch (key) {
-    // UI
-
-    // MANAGE
     case APP_MENU.MANAGE_ORDER:
       return <Order />;
     case APP_MENU.MANAGE_PRODUCT:

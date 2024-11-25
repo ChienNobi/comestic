@@ -16,7 +16,7 @@ const TopRatedProducts = () => {
   } else if (!isLoading && isError) {
     content = <ErrorMsg msg="There was an error" />;
   } else if (!isLoading && !isError && products?.data?.length === 0) {
-    content = <ErrorMsg msg="No Products found!" />;
+    content = <ErrorMsg msg="Không tìm thấy sản phẩm!" />;
   } else if (!isLoading && !isError && products?.data?.length > 0) {
     const product_items = products.data.slice(0, 3);
     content = product_items.map((item) => (
