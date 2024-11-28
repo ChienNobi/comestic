@@ -18,7 +18,7 @@ const CheckoutLogin = () => {
 
       {isOpen && (
         <div id="tpReturnCustomerLoginForm" className="tp-return-customer">
-          <LoginForm />
+          <LoginForm needRedirect={false}/>
         </div>
       )}
     </div>

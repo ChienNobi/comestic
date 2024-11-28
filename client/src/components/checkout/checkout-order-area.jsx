@@ -173,7 +173,7 @@ const CheckoutOrderArea = ({ checkoutData }) => {
           disabled={!stripe || isCheckoutSubmit}
           className="tp-checkout-btn w-100"
         >
-          Place Order
+          Đặt hàng
         </button>
       </div>
     </div>

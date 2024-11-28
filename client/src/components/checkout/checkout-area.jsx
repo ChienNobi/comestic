@@ -7,10 +7,12 @@ import CheckoutCoupon from "./checkout-coupon";
 import CheckoutLogin from "./checkout-login";
 import CheckoutOrderArea from "./checkout-order-area";
 import useCheckoutSubmit from "@/hooks/use-checkout-submit";
+import useAuthCheck from "@/hooks/use-auth-check";
 
 const CheckoutArea = () => {
+  const authChecked = useAuthCheck();
   const checkoutData = useCheckoutSubmit();
-  const {handleSubmit,submitHandler,register,errors,handleCouponCode,couponRef,couponApplyMsg} = checkoutData;
+  const { handleSubmit,submitHandler,register,errors,handleCouponCode,couponRef,couponApplyMsg} = checkoutData;
   const { cart_products } = useSelector((state) => state.cart);
   return (
     <>
@@ -31,7 +33,7 @@ const CheckoutArea = () => {
             <div className="row">
               <div className="col-xl-7 col-lg-7">
                 <div className="tp-checkout-verify">
-                  <CheckoutLogin />
+                  { !authChecked ? <CheckoutLogin /> : null }
                   <CheckoutCoupon
                     handleCouponCode={handleCouponCode}
                     couponRef={couponRef}

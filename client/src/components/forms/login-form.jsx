@@ -4,23 +4,21 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { useRouter } from "next/router";
 import Link from "next/link";
-// internal
 import { CloseEye, OpenEye } from "@/svg";
 import ErrorMsg from "../common/error-msg";
 import { useLoginUserMutation } from "@/redux/features/auth/authApi";
 import { notifyError, notifySuccess } from "@/utils/toast";
 
-// schema
 const schema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
   password: Yup.string().required().min(6).label("Password"),
 });
-const LoginForm = () => {
+const LoginForm = (props) => {
   const [showPass, setShowPass] = useState(false);
   const [loginUser, {}] = useLoginUserMutation();
   const router = useRouter();
   const { redirect } = router.query;
-  // react hook form
+  const needRedirect = props.needRedirect || true;
   const {
     register,
     handleSubmit,
@@ -37,7 +35,9 @@ const LoginForm = () => {
     }).then((data) => {
       if (data?.data) {
         notifySuccess("Đăng nhập thành công");
-        router.push(redirect || "/")
+        if(needRedirect) {
+            return router.push(redirect || "/");
+        }
       } else {
         notifyError(data?.error?.data?.error);
       }

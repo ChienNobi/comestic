@@ -24,41 +24,23 @@ const useCheckoutSubmit = () => {
     isLoading,
   } = useGetOfferCouponsQuery();
   const data = offerCoupons?.data;
-  // addOrder
   const [saveOrder, {}] = useSaveOrderMutation();
-  // createPaymentIntent
   const [createPaymentIntent, {}] = useCreatePaymentIntentMutation();
-  // cart_products
   const { cart_products } = useSelector((state) => state.cart);
-  // user
   const { user } = useSelector((state) => state.auth);
-  // shipping_info
   const { shipping_info } = useSelector((state) => state.order);
-  // total amount
   const { total, setTotal } = useCartInfo();
-  // couponInfo
   const [couponInfo, setCouponInfo] = useState({});
-  //cartTotal
   const [cartTotal, setCartTotal] = useState("");
-  // minimumAmount
   const [minimumAmount, setMinimumAmount] = useState(0);
-  // shippingCost
   const [shippingCost, setShippingCost] = useState(0);
-  // discountAmount
   const [discountAmount, setDiscountAmount] = useState(0);
-  // discountPercentage
   const [discountPercentage, setDiscountPercentage] = useState(0);
-  // discountProductType
   const [discountProductType, setDiscountProductType] = useState("");
-  // isCheckoutSubmit
   const [isCheckoutSubmit, setIsCheckoutSubmit] = useState(false);
-  // cardError
   const [cardError, setCardError] = useState("");
-  // clientSecret
   const [clientSecret, setClientSecret] = useState("");
-  // showCard
   const [showCard, setShowCard] = useState(false);
-  // coupon apply message
   const [couponApplyMsg, setCouponApplyMsg] = useState("");
 
   const dispatch = useDispatch();
@@ -141,7 +123,7 @@ const useCheckoutSubmit = () => {
     e.preventDefault();
 
     if (!couponRef.current?.value) {
-      notifyError("Please Input a Coupon Code!");
+      notifyError("Nhập vào mã giảm giá!");
       return;
     }
     if (isLoading) {
@@ -154,8 +136,8 @@ const useCheckoutSubmit = () => {
       (coupon) => coupon.couponCode === couponRef.current?.value
     );
 
-    if (result.length < 1) {
-      notifyError("Please Input a Valid Coupon!");
+    if (!result?.length) {
+      notifyError("Mã giảm giá không hợp lệ");
       return;
     }
 
@@ -293,7 +275,7 @@ const useCheckoutSubmit = () => {
       if (intentErr) {
         notifyError(intentErr.message);
       } else {
-        // notifySuccess("Your payment processed successfully");
+        notifySuccess("Your payment processed successfully");
       }
 
       const orderData = {
@@ -325,7 +307,6 @@ const useCheckoutSubmit = () => {
     shippingCost,
     discountPercentage,
     discountProductType,
-    isCheckoutSubmit,
     setTotal,
     register,
     errors,

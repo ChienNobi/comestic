@@ -8,7 +8,7 @@ exports.paymentIntent = async ctx => {
     const amount = price * 100;
 
     const paymentIntent = await stripe.paymentIntents.create({
-      currency: 'usd',
+      currency: 'VND',
       amount: amount,
       payment_method_types: ['card'],
     });
