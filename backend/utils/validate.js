@@ -14,6 +14,7 @@ const validateUser = (data, isAllOptional) => {
   const schema = {
     email: Joi.string().min(3).max(100).regex(EMAIL_REGEX).required(),
     name: Joi.string().min(3).max(100).required(),
+    password: Joi.string().allow(''),
     phone: Joi.string().min(10).max(15).regex(PHONE_REGEX).allow(''),
     address: Joi.string().allow(''),
     imageURL: Joi.string().allow(''),
