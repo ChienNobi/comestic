@@ -9,7 +9,7 @@
     &-style-2{
         #{$self}{
             &-desc{
-                @extend %tp-ff-jost;
+                @extend %tp-ff-roboto;
                 font-weight: 400;
                 font-size: 20px;
                 line-height: 1.3;
@@ -63,13 +63,13 @@
                     @extend %tp-ff-jost;
                     font-weight: 500;
                     font-size: 22px;
-        
+
                     & a{
                         &:hover{
                             color: var(--tp-theme-secondary);
                         }
                     }
-        
+
                 }
             }
             &-contact{
@@ -98,7 +98,7 @@
                     }
                 }
             }
-           
+
         }
         &#{$self}-style-primary{
             #{$self}{
@@ -129,13 +129,13 @@
                 &-talk{
                     margin-bottom: 25px;
                     & h4{
-            
+
                         & a{
                             &:hover{
                                 color: var(--tp-theme-primary);
                             }
                         }
-            
+
                     }
                 }
                 &-contact{
@@ -164,7 +164,7 @@
                         }
                     }
                 }
-               
+
             }
         }
         &#{$self}-style-6{

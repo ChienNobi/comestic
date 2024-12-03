@@ -35,7 +35,8 @@ const TABLE_ACTIONS = {
 
 const ROLES = {
   USER: 'user',
-  ADMIN: 'admin'
+  ADMIN: 'admin',
+  EMPLOYEE: 'employee'
 }
 
 module.exports = {

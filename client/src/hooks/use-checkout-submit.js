@@ -15,6 +15,7 @@ import {
   useSaveOrderMutation,
 } from "@/redux/features/order/orderApi";
 import { useGetOfferCouponsQuery } from "@/redux/features/coupon/couponApi";
+import {SHIPPING_FEE_NORMAL} from "@/commons/constants";
 
 const useCheckoutSubmit = () => {
   // offerCoupons

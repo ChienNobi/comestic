@@ -11,8 +11,8 @@ const WishlistArea = () => {
         <div className="container">
           {wishlist.length === 0 &&
             <div className='text-center pt-50'>
-              <h3>No Wishlist Items Found</h3>
-              <Link href="/shop" className="tp-cart-checkout-btn mt-20">Continue Shipping</Link>
+              <h3>Không tìm thấy mục danh sách yêu thích nào</h3>
+              <Link href="/shop" className="tp-cart-checkout-btn mt-20">Tiếp tục mua sắm</Link>
             </div>
           }
           {wishlist.length > 0 &&
@@ -22,10 +22,10 @@ const WishlistArea = () => {
                   <table className="table">
                     <thead>
                       <tr>
-                        <th colSpan="2" className="tp-cart-header-product">Product</th>
-                        <th className="tp-cart-header-price">Price</th>
-                        <th className="tp-cart-header-quantity">Quantity</th>
-                        <th>Action</th>
+                        <th colSpan="2" className="tp-cart-header-product">Sản phẩm</th>
+                        <th className="tp-cart-header-price">Giá</th>
+                        <th className="tp-cart-header-quantity">Số lượng</th>
+                        <th>Thao tác</th>
                         <th></th>
                       </tr>
                     </thead>
@@ -40,7 +40,7 @@ const WishlistArea = () => {
                   <div className="row align-items-end">
                     <div className="col-xl-6 col-md-4">
                       <div className="tp-cart-update">
-                        <Link href="/cart" className="tp-cart-update-btn">Go To Cart</Link>
+                        <Link href="/cart" className="tp-cart-update-btn">Đi đến giỏ hàng</Link>
                       </div>
                     </div>
                   </div>

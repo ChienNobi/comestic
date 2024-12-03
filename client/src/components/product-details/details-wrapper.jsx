@@ -158,24 +158,22 @@ const DetailsWrapper = ({
 
       {/* actions */}
       <div className="tp-product-details-action-wrapper">
-        <h3 className="tp-product-details-action-title">Quantity</h3>
+        <h3 className="tp-product-details-action-title">Số lượng</h3>
         <div className="tp-product-details-action-item-wrapper d-sm-flex align-items-center">
-          {/* product quantity */}
           <ProductQuantity />
-          {/* product quantity */}
           <div className="tp-product-details-add-to-cart mb-15 w-100">
             <button
               onClick={() => handleAddProduct(productItem)}
               disabled={status === "out-of-stock"}
               className="tp-product-details-add-to-cart-btn w-100"
             >
-              Add To Cart
+              Thêm vào giỏ hàng
             </button>
           </div>
         </div>
-        <Link href="/cart" onClick={() => dispatch(handleModalClose())}>
+        <Link href="/cart" onClick={() => handleAddProduct(productItem)}>
           <button className="tp-product-details-buy-now-btn w-100">
-            Buy Now
+            Mua ngay
           </button>
         </Link>
       </div>
@@ -197,7 +195,7 @@ const DetailsWrapper = ({
           className="tp-product-details-action-sm-btn"
         >
           <WishlistTwo />
-          Add Wishlist
+          Wishlist
         </button>
         <button type="button" className="tp-product-details-action-sm-btn">
           <AskQuestion />

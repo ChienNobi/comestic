@@ -14,37 +14,6 @@ const AddEmployee = NiceModal.create(({ data, onSuccess, messageApi }) => {
   const [departments, setDepartments] = useState([]);
   const [roles, setRoles] = useState([]);
 
-  useEffect(() => {
-    api
-      .getDepartments()
-      .then(response => {
-        setDepartments(
-          response.data?.map(d => {
-            d.label = d.name;
-            d.value = d.id;
-            return d;
-          }),
-        );
-      })
-      .catch(error => {
-        console.log('Get departments error', error);
-      });
-    api
-      .getRoles()
-      .then(response => {
-        setRoles(
-          response.data?.map(r => {
-            r.label = r.name;
-            r.value = r.id;
-            return r;
-          }),
-        );
-      })
-      .catch(error => {
-        console.log('Get roles error', error);
-      });
-  }, []);
-
   const onFinish = values => {
     if (data?.id) {
       const updatedValues = {};
@@ -145,20 +114,15 @@ const AddEmployee = NiceModal.create(({ data, onSuccess, messageApi }) => {
             allowClear
           />
         </Form.Item>
-        <Form.Item
-          name="department"
-          label="Bộ phận"
-          initialValue={data?.department || ''}
-        >
-          <Select allowClear placeholder="Chọn bộ phận" options={departments} />
-        </Form.Item>
-        <Form.Item name="role" label="Vai trò" initialValue={data?.role || ''}>
-          <Select allowClear placeholder="Chọn vai trò" options={roles} />
-        </Form.Item>
+
         <Form.Item
           name="phone"
           label="Số điện thoại"
           initialValue={data?.phone || ''}
+          rules={[{
+            pattern: /^\d{10}$/,
+            message: "Số điện thoại phải có 10 kí tự!",
+          }]}
         >
           <Input
             placeholder="Nhập số điện thoại"

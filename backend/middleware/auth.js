@@ -9,7 +9,14 @@ const authMiddleware = (allowedRoles) => {
       ctx.body = { message: 'Access denied. No token provided.' };
       return;
     }
-    const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+    let decoded;
+    try {
+      decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+    } catch (error) {
+      ctx.status = 401;
+      ctx.body = { message: 'Invalid token.' };
+      return;
+    }
     ctx.state.user = decoded;
     console.log(decoded)
 

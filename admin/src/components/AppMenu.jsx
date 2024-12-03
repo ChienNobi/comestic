@@ -42,8 +42,7 @@ const menuAdminItems = [
     label: 'ADMIN',
     children: [
       { key: APP_MENU.ADMIN_EMPLOYEE, label: 'Nhân viên' },
-      { key: APP_MENU.ADMIN_ROLE, label: 'Vai trò' },
-      { key: APP_MENU.ADMIN_DEPARTMENT, label: 'Phòng ban' },
+      { key: APP_MENU.USER_MANAGER, label: 'Quản lý user' }
     ],
     type: 'group',
   },

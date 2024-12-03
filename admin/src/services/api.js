@@ -224,4 +224,9 @@ api.getCouponsLogs = async () => {
   return api.get('/logs/collection?tableName=Coupon');
 };
 
+// user
+api.getUsers = async params => {
+  return api.get('/user', { params });
+};
+
 export default api;

@@ -39,9 +39,6 @@ const Footer = ({
                         <Image src={logo} alt="logo" />
                       </Link>
                     </div>
-                    <p className="tp-footer-desc">
-                      Experience the Essence of Glamorous Sophistication
-                    </p>
                     <div className="tp-footer-social">
                       {social_data.map((s) => (
                         <a href={s.link} key={s.id} target="_blank">

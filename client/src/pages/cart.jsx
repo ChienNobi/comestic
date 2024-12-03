@@ -11,7 +11,7 @@ const CartPage = () => {
     <Wrapper>
       <SEO pageTitle="Cart" />
       <HeaderTwo style_2={true} />
-      <CommonBreadcrumb title="Shopping Cart" subtitle="Shopping Cart" />
+      <CommonBreadcrumb title="Giỏ hàng" subtitle="Giỏ hàng" />
       <CartArea/>
       <Footer primary_style={true} />
     </Wrapper>

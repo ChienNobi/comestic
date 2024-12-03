@@ -1,13 +1,14 @@
 const Router = require('koa-router');
 const employeeController = require('../controllers/employee');
+const authMiddleware = require("../middleware/auth");
 
 const router = new Router();
 
-router.get('/', employeeController.getAllEmployees);
+router.get('/', authMiddleware(), employeeController.getAllEmployees);
 router.get('/:id', employeeController.getEmployeeById);
-router.post('/', employeeController.createEmployee);
-router.put('/:id', employeeController.updateEmployee);
-router.delete('/:id', employeeController.deleteEmployee);
+router.post('/', authMiddleware(), employeeController.createEmployee);
+router.put('/:id', authMiddleware(), employeeController.updateEmployee);
+router.delete('/:id', authMiddleware(), employeeController.deleteEmployee);
 
 // auth
 router.post('/auth/login', employeeController.login);

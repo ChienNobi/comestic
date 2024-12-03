@@ -386,7 +386,6 @@ const AddProduct = NiceModal.create(({ data, onSuccess, messageApi }) => {
               <Radio.Group>
                 <Radio value={'in-stock'}>Còn hàng</Radio>
                 <Radio value={'out-of-stock'}>Hết hàng</Radio>
-                {/* <Radio value={'discontinued'}>Ngừng bán</Radio> */}
               </Radio.Group>
             </Form.Item>
             <Form.Item

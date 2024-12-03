@@ -25,6 +25,7 @@ import Category from '../manage/category';
 import Brand from '../manage/brand';
 import Order from '../manage/order';
 import Coupon from '../manage/coupon';
+import UserManager from "@/containers/admin/user-manager/index.jsx";
 
 const EmptyLayout = styled.div({
   width: '100%',
@@ -54,6 +55,8 @@ const getContentLayout = key => {
       return <Employee />;
     case APP_MENU.ADMIN_DEPARTMENT:
       return <Department />;
+    case APP_MENU.USER_MANAGER:
+      return <UserManager />
 
     default:
       return (

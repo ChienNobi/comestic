@@ -54,7 +54,7 @@ const columns = [
   {
     title: 'Vai trò',
     key: 'role',
-    sorter: (a, b) => sortByAlphabet(a.roleData.name, b.roleData.name),
+    sorter: (a, b) => sortByAlphabet(a?.roleData?.name, b?.roleData?.name),
     sortDirections: ['descend', 'ascend'],
     width: 120,
     render: record => record?.roleData?.name || record?.role,

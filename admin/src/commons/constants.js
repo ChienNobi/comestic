@@ -18,6 +18,7 @@ export const APP_MENU = {
   ADMIN_EMPLOYEE: 'admin_employee',
   ADMIN_ROLE: 'admin_role',
   ADMIN_DEPARTMENT: 'admin_department',
+  USER_MANAGER: 'user_manager',
 };
 
 export const ROLE_FEATURES = {

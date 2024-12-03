@@ -27,6 +27,8 @@ export const getMenuName = key => {
       return 'Quản lý nhân viên';
     case APP_MENU.ADMIN_ROLE:
       return 'Quản lý vai trò';
+    case APP_MENU.USER_MANAGER:
+      return 'Quản lý người dùng';
     case APP_MENU.ADMIN_DEPARTMENT:
       return 'Quản lý bộ phận';
   }

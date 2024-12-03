@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 // internal
 import useCartInfo from "@/hooks/use-cart-info";
 import ErrorMsg from "../common/error-msg";
+import {SHIPPING_FEE_FAST, SHIPPING_FEE_NORMAL} from "@/commons/constants";
+import {formatMoney} from "@/utils/formatter";
 
 const CheckoutOrderArea = ({ checkoutData }) => {
   const {
@@ -23,89 +25,86 @@ const CheckoutOrderArea = ({ checkoutData }) => {
   const { total } = useCartInfo();
   return (
     <div className="tp-checkout-place white-bg">
-      <h3 className="tp-checkout-place-title">Your Order</h3>
+      <h3 className="tp-checkout-place-title">Thông tin mua hàng</h3>
 
       <div className="tp-order-info-list">
         <ul>
           {/*  header */}
           <li className="tp-order-info-list-header">
-            <h4>Product</h4>
-            <h4>Total</h4>
+            <h4>Sản phẩm</h4>
+            <h4>Tổng tiền</h4>
           </li>
 
-          {/*  item list */}
           {cart_products.map((item) => (
             <li key={item.id} className="tp-order-info-list-desc">
               <p>
                 {item.name} <span> x {item.orderQuantity}</span>
               </p>
-              <span>${item.price.toFixed(2)}</span>
+              <span>{formatMoney(item.price)}</span>
             </li>
           ))}
 
-          {/*  shipping */}
           <li className="tp-order-info-list-shipping">
-            <span>Shipping</span>
+            <span>Phương thức giao hàng</span>
             <div className="tp-order-info-list-shipping-item d-flex flex-column align-items-end">
               <span>
                 <input
                   {...register(`shippingOption`, {
-                    required: `Shipping Option is required!`,
+                    required: `Vui lòng chọn phương thức giao hàng`,
                   })}
                   id="flat_shipping"
                   type="radio"
                   name="shippingOption"
                 />
                 <label
-                  onClick={() => handleShippingCost(10)}
+                  onClick={() => handleShippingCost(SHIPPING_FEE_FAST)}
                   htmlFor="flat_shipping"
                 >
-                  Delivery: Today Cost :<span>$10.00</span>
+                  Ship nhanh <span>{formatMoney(SHIPPING_FEE_FAST)}</span>
                 </label>
-                <ErrorMsg msg={errors?.shippingOption?.message} />
               </span>
               <span>
                 <input
                   {...register(`shippingOption`, {
-                    required: `Shipping Option is required!`,
+                    required: `Vui lòng chọn phương thức giao hàng`,
                   })}
                   id="flat_rate"
                   type="radio"
                   name="shippingOption"
                 />
                 <label
-                  onClick={() => handleShippingCost(5)}
+                  onClick={() => handleShippingCost(SHIPPING_FEE_NORMAL)}
                   htmlFor="flat_rate"
                 >
-                  Delivery: 7 Days Cost: <span>$5.00</span>
+                  Ship thường <span>{formatMoney(SHIPPING_FEE_NORMAL)}</span>
                 </label>
-                <ErrorMsg msg={errors?.shippingOption?.message} />
               </span>
+              <ErrorMsg msg={errors?.shippingOption?.message} />
             </div>
           </li>
 
           {/*  subtotal */}
           <li className="tp-order-info-list-subtotal">
-            <span>Subtotal</span>
-            <span>${total.toFixed(2)}</span>
+            <span>Tổng phụ</span>
+            <span>{formatMoney(total)}</span>
           </li>
 
           {/*  shipping cost */}
           <li className="tp-order-info-list-subtotal">
-            <span>Shipping Cost</span>
-            <span>${shippingCost.toFixed(2)}</span>
+            <span>Phí ship</span>
+            <span>{formatMoney(shippingCost)}</span>
           </li>
 
           {/* discount */}
           <li className="tp-order-info-list-subtotal">
-            <span>Discount</span>
-            <span>${discountAmount.toFixed(2)}</span>
+            <span>Giảm giá</span>
+            <span>{formatMoney(discountAmount)}</span>
           </li>
 
           {/* total */}
           <li className="tp-order-info-list-total">
-            <span>Total</span>
-            <span>${parseFloat(cartTotal).toFixed(2)}</span>
+            <span>Tổng tiền</span>
+            <span>{formatMoney(cartTotal)}</span>
           </li>
         </ul>
       </div>
@@ -113,7 +112,7 @@ const CheckoutOrderArea = ({ checkoutData }) => {
         <div className="tp-checkout-payment-item">
           <input
             {...register(`payment`, {
-              required: `Payment Option is required!`,
+              required: `Vui lòng chọn phương thức thanh toán!`,
             })}
             type="radio"
             id="back_transfer"
@@ -125,7 +124,7 @@ const CheckoutOrderArea = ({ checkoutData }) => {
             htmlFor="back_transfer"
             data-bs-toggle="direct-bank-transfer"
           >
-            Credit Card
+            Thẻ ngân hàng
           </label>
           {showCard && (
             <div className="direct-bank-transfer">
@@ -149,12 +148,11 @@ const CheckoutOrderArea = ({ checkoutData }) => {
               </div>
             </div>
           )}
-          <ErrorMsg msg={errors?.payment?.message} />
         </div>
         <div className="tp-checkout-payment-item">
           <input
             {...register(`payment`, {
-              required: `Payment Option is required!`,
+              required: `Vui lòng chọn phương thức thanh toán`,
             })}
             onClick={() => setShowCard(false)}
             type="radio"
@@ -162,9 +160,9 @@ const CheckoutOrderArea = ({ checkoutData }) => {
             name="payment"
             value="COD"
           />
-          <label htmlFor="cod">Cash on Delivery</label>
-          <ErrorMsg msg={errors?.payment?.message} />
+          <label htmlFor="cod">Thanh toán khi nhận hàng</label>
         </div>
+        <ErrorMsg msg={errors?.payment?.message} />
       </div>
 
       <div className="tp-checkout-btn-wrapper">

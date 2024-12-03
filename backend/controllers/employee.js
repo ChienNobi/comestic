@@ -7,6 +7,7 @@ const {
   validateEmployee,
   validateEmployeeLogin,
 } = require('../utils/validate');
+const {ROLES} = require("../commons/constants");
 
 exports.getAllEmployees = async ctx => {
   try {
@@ -49,32 +50,14 @@ exports.getEmployeeById = async ctx => {
 exports.createEmployee = async ctx => {
   try {
     const data = ctx.request.body;
+    data.role = ROLES.EMPLOYEE;
     const { error } = validateEmployee(data);
     if (error) {
       ctx.throw(400, error.details[0].message);
     }
 
-    if (data.department) {
-      const department = await Department.findOne({ id: data.department });
-      if (!department) {
-        ctx.throw(400, 'Department not found');
-      }
-    }
-
-    if (data.role) {
-      const role = await Role.findOne({ id: data.role });
-      if (!role) {
-        ctx.throw(400, 'Role not found');
-      }
-    }
-
     if (data.password) {
       data.password = await bcrypt.hash(data.password, 6);
-    }
-
-    const hasEmployee = await Employee.findOne({ id: data.id });
-    if (hasEmployee) {
-      ctx.throw(400, 'Employee is already exists');
     }
 
     if (data.phone) {
