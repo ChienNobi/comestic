@@ -229,4 +229,8 @@ api.getUsers = async params => {
   return api.get('/user', { params });
 };
 
+api.updateUser = async (user) => {
+  return api.put(`/user`, user);
+};
+
 export default api;

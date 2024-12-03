@@ -73,6 +73,7 @@ const MasterTable = ({
   rowClassName,
   fixed = true,
   onExportPDF,
+  showLog= true,
 }) => {
   const searchTimer = useRef();
 
@@ -171,9 +172,14 @@ const MasterTable = ({
                   Thêm mới
                 </Button>
               )}
-              <Button icon={<HistoryOutlined />} onClick={onShowLog}>
-                Nhật ký
-              </Button>
+              {
+                showLog && (
+                    <Button icon={<HistoryOutlined />} onClick={onShowLog}>
+                      Nhật ký
+                    </Button>
+                )
+              }
+
             </Space>
           </>
         )}

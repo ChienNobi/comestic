@@ -74,7 +74,7 @@ EmployeeSchema.post('save', function (doc) {
   const log = new Log({
     tableName,
     action: TABLE_ACTIONS.ADD,
-    userId: doc._userId,
+    userId: doc.userId,
     recordId: doc.id,
     time: Date.now(),
   });

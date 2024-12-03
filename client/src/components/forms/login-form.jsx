@@ -39,7 +39,7 @@ const LoginForm = (props) => {
             return router.push(redirect || "/");
         }
       } else {
-        notifyError(data?.error?.data?.error);
+        notifyError(data?.error?.data?.error || data?.error?.data?.message);
       }
     });
     reset();

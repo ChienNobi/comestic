@@ -1,43 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Layout, Tag, message } from 'antd';
+import {Layout, Tag, message, Button, Popconfirm, Space} from 'antd';
 import NiceModal from '@ebay/nice-modal-react';
 
-import { sortByAlphabet } from '@/commons/utils';
 import api from '@/services/api';
 import Detail from './Detail';
 import MasterTable from '@/components/MasterTable';
 import AppHeader from '@/components/AppHeader';
-import LogsDrawer from '@/components/LogsDrawer';
-import { getFeatureName } from '@/commons/locale';
-import { FeatureTag } from './styles';
-
-const localeFields = {
-  id: 'Mã vai trò',
-  name: 'Tên vai trò',
-  accessibleFeatures: 'Tính năng truy cập',
-};
-
-const columns = [
-  {
-    title: 'Họ và tên',
-    dataIndex: 'name',
-    key: 'name',
-  },
-  {
-    title: 'Email',
-    dataIndex: 'email',
-    key: 'email',
-  },
-  {
-    title: 'Trạng thái',
-    dataIndex: 'status',
-    key: 'status',
-    render: status => {
-      const color = status === 'active' ? 'green' : 'red';
-      return <Tag color={color}>{status}</Tag>;
-    },
-  },
-];
 
 const Role = () => {
   const [data, setData] = useState();
@@ -64,6 +32,62 @@ const Role = () => {
         setLoading(false);
       });
   };
+
+  const onUpdate = record => {
+    api
+        .updateUser({
+          email: record.email,
+          status: record.status === 'active' ? 'deactive' : 'active',
+        })
+        .then(() => {
+          getUser();
+          messageApi.success('Cập nhật thành công');
+        })
+        .catch(error => {
+          console.log('Update user error', error);
+          messageApi.error('Cập nhật thất bại');
+        });
+  }
+
+  const columns = [
+    {
+      title: 'Họ và tên',
+      dataIndex: 'name',
+      key: 'name',
+    },
+    {
+      title: 'Email',
+      dataIndex: 'email',
+      key: 'email',
+    },
+    {
+      title: 'Trạng thái',
+      dataIndex: 'status',
+      key: 'status',
+      render: status => {
+        const color = status === 'active' ? 'green' : 'red';
+        return <Tag color={color}>{status}</Tag>;
+      },
+    },
+    {
+      title: 'Action',
+      key: 'action',
+      render: record => (
+          <Space size="middle">
+            <Popconfirm
+                title="Bạn có chắc muốn thực hiện hành động này?"
+                description="Thao tác này có thể ảnh hưởng tới các tính năng khác"
+                okText="OK"
+                cancelText="Hủy"
+                onConfirm={() => onUpdate?.(record)}
+            >
+              <Button size="small">{ record.status === 'active' ? 'Khóa' : 'Mở khóa' }</Button>
+            </Popconfirm>
+          </Space>
+      ),
+    },
+  ];
+
 
   useEffect(() => {
     getUser();
@@ -136,10 +160,11 @@ const Role = () => {
             loading={loading}
             onClick={displayDetail}
             onSearch={onSearch}
-            onAdd={onAdd}
-            onEdit={onEdit}
+            onAdd={false}
+            onEdit={false}
             onDelete={onDelete}
             showActions={false}
+            showLog={false}
           />
         )}
       </Layout.Content>

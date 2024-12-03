@@ -8,6 +8,7 @@ router.get('/', authMiddleware(), userController.getAllUsers);
 router.get('/:id', userController.getUserById);
 router.post('/', authMiddleware(), userController.createUser);
 router.put('/:id', authMiddleware(), userController.updateUser);
+router.put('/', authMiddleware(), userController.updateUser);
 router.delete('/:id', authMiddleware(), userController.deleteUser);
 // change password
 router.patch('/change-password', authMiddleware(), userController.changePassword);

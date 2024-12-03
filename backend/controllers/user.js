@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs');
 const User = require('../models/user');
 const { validateLogin, validateUser } = require('../utils/validate');
 const { generateToken, generateRefreshToken } = require('../utils/token');
+const {USER_STATUSES} = require("../commons/constants");
 
 exports.getAllUsers = async ctx => {
   try {
@@ -59,7 +60,7 @@ exports.createUser = async ctx => {
 exports.updateUser = async ctx => {
   try {
     const data = ctx.request.body;
-    const { error } = validateUser(data);
+    const { error } = validateUser(data, true);
     if (error) {
       ctx.throw(400, error.details[0].message);
     }
@@ -75,6 +76,8 @@ exports.updateUser = async ctx => {
         ctx.throw(400, 'Phone is already exists');
       }
     }
+
+    data.password = user.password;
 
     const updatedUser = await User.findOneAndUpdate(
       { email: data.email },
@@ -112,8 +115,8 @@ exports.login = async ctx => {
 
     const { email, password } = ctx.request.body;
     const user = await User.findOne({ email }).select('-__v').lean();
-    if (!user) {
-      ctx.throw(400, 'Invalid email!');
+    if (!user || user.status === USER_STATUSES.DEACTIVE) {
+      ctx.throw(400, 'Email không tồn tại hoặc đã bị vô hiệu hóa');
     }
     const validPassword = await bcrypt.compare(password, user.password);
     if (!validPassword) {

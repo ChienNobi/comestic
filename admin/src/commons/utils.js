@@ -46,5 +46,6 @@ export const getImage = async url => {
 };
 
 export const formatPrice = price => {
-  return price?.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+   if(!price || isNaN(price)) return '0';
+  return price.toLocaleString() + ' ₫';
 };

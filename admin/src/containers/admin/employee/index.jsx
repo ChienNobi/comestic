@@ -43,15 +43,6 @@ const columns = [
     width: 120,
   },
   {
-    title: 'Bộ phận',
-    key: 'department',
-    sorter: (a, b) =>
-      sortByAlphabet(a.departmentData.name, b.departmentData.name),
-    sortDirections: ['descend', 'ascend'],
-    width: 120,
-    render: record => record?.departmentData?.name || record?.department,
-  },
-  {
     title: 'Vai trò',
     key: 'role',
     sorter: (a, b) => sortByAlphabet(a?.roleData?.name, b?.roleData?.name),
@@ -63,8 +54,6 @@ const columns = [
     title: 'Mật khẩu',
     dataIndex: 'hasPassword',
     key: 'hasPassword',
-    sorter: (a, b) => a - b,
-    sortDirections: ['descend', 'ascend'],
     width: 100,
     render: value => (value ? 'Đã có' : 'Chưa'),
   },

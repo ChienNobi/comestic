@@ -51,7 +51,7 @@ const NavProfileTab = ({ orderData }) => {
                   <Box />
                 </span>
               </div>
-              <h4 className="profile__main-info-title">Total Order</h4>
+              <h4 className="profile__main-info-title">Toàn bộ đơn hàng</h4>
             </div>
           </div>
           <div className="col-md-3 col-sm-6">
@@ -64,7 +64,7 @@ const NavProfileTab = ({ orderData }) => {
                   <Processing />
                 </span>
               </div>
-              <h4 className="profile__main-info-title">Pending Order</h4>
+              <h4 className="profile__main-info-title">Đơn hàng chờ xác nhận</h4>
             </div>
           </div>
           <div className="col-md-3 col-sm-6">
@@ -77,7 +77,7 @@ const NavProfileTab = ({ orderData }) => {
                   <Truck />
                 </span>
               </div>
-              <h4 className="profile__main-info-title">Processing Order</h4>
+              <h4 className="profile__main-info-title">Đơn hàng đang được xử lý</h4>
             </div>
           </div>
           <div className="col-md-3 col-sm-6">
@@ -90,7 +90,7 @@ const NavProfileTab = ({ orderData }) => {
                   <DeliveryTwo />
                 </span>
               </div>
-              <h4 className="profile__main-info-title">Complete Order</h4>
+              <h4 className="profile__main-info-title">Đơn hàng đã hoàn thành</h4>
             </div>
           </div>
         </div>

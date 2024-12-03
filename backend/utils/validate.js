@@ -13,12 +13,12 @@ const validate = (schema, data, isAllOptional = false) => {
 const validateUser = (data, isAllOptional) => {
   const schema = {
     email: Joi.string().min(3).max(100).regex(EMAIL_REGEX).required(),
-    password: Joi.string().min(6).required(),
     name: Joi.string().min(3).max(100).required(),
     phone: Joi.string().min(10).max(15).regex(PHONE_REGEX).allow(''),
     address: Joi.string().allow(''),
     imageURL: Joi.string().allow(''),
     bio: Joi.string().allow(''),
+    status: Joi.string()
   };
   return validate(schema, data, isAllOptional);
 };

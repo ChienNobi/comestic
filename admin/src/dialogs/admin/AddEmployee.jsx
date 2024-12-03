@@ -120,8 +120,8 @@ const AddEmployee = NiceModal.create(({ data, onSuccess, messageApi }) => {
           label="Số điện thoại"
           initialValue={data?.phone || ''}
           rules={[{
-            pattern: /^\d{10}$/,
-            message: "Số điện thoại phải có 10 kí tự!",
+            pattern: /(0[3|5|7|8|9])+([0-9]{8})\b/,
+            message: "Số điện thoại không hợp lệ",
           }]}
         >
           <Input

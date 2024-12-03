@@ -41,12 +41,12 @@ const ProfileNavTab = () => {
         />
         <SingleNav
           id="order"
-          title="My Orders"
+          title="Quản lý đơn hàng"
           icon="fa-light fa-clipboard-list-check"
         />
         <SingleNav
           id="password"
-          title="Change Password"
+          title="Đổi mật khẩu"
           icon="fa-regular fa-lock"
         />
       </div>

@@ -11,7 +11,9 @@ const {ROLES} = require("../commons/constants");
 
 exports.getAllEmployees = async ctx => {
   try {
-    const query = {};
+    const query = {
+      role: ROLES.EMPLOYEE
+    };
     if (ctx.query.keyword) {
       query.searchIndex = { $regex: ctx.query.keyword, $options: 'i' };
     }
@@ -66,6 +68,8 @@ exports.createEmployee = async ctx => {
         ctx.throw(400, 'Phone is already exists');
       }
     }
+
+    data.userId = ctx.state.user.id;
 
     const newEmployee = new Employee(data);
     const savedEmployee = await newEmployee.save();
