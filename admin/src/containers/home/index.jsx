@@ -26,6 +26,7 @@ import Brand from '../manage/brand';
 import Order from '../manage/order';
 import Coupon from '../manage/coupon';
 import UserManager from "@/containers/admin/user-manager/index.jsx";
+import BeautyTreatment from "@/containers/manage/beauty-treatment/index.jsx";
 
 const EmptyLayout = styled.div({
   width: '100%',
@@ -47,6 +48,8 @@ const getContentLayout = key => {
       return <Category />;
     case APP_MENU.MANAGE_BRAND:
       return <Brand />;
+    case APP_MENU.MANAGER_BEAUTY_TREATMENT:
+        return <BeautyTreatment />;
 
     // ADMIN
     case APP_MENU.ADMIN_ROLE:

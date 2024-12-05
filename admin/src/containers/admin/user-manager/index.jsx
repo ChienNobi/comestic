@@ -100,19 +100,6 @@ const Role = () => {
   const displayDetail = (record, index) => {
     setDetail(record);
   };
-  const onSearch = value => {
-    getRoles({ keyword: value });
-  };
-
-  const onAdd = () => {
-    NiceModal.show('add-role', {
-      messageApi,
-      onSuccess: () => {
-        getRoles();
-        messageApi.success('Thêm thành công');
-      },
-    });
-  };
 
   const onEdit = (record, callback) => {
     NiceModal.show('add-role', {

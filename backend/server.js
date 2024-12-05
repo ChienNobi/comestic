@@ -21,6 +21,7 @@ const brandRoutes = require('./routes/brand');
 const reviewRoutes = require('./routes/review');
 const orderRoutes = require('./routes/order');
 const couponRoutes = require('./routes/coupon');
+const beautyTreatmentRoutes = require('./routes/beauty_treatment');
 
 // Load environment variables
 dotenv.config();
@@ -60,6 +61,7 @@ router.use('/api/brands', brandRoutes.routes());
 router.use('/api/reviews', reviewRoutes.routes());
 router.use('/api/orders', orderRoutes.routes());
 router.use('/api/coupons', couponRoutes.routes());
+router.use('/api/beauty-treatment', beautyTreatmentRoutes.routes());
 
 app.use(router.routes());
 app.use(router.allowedMethods({ throw: true }));

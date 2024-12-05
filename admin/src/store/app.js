@@ -4,7 +4,7 @@ export const appSlice = createSlice({
   name: 'app',
   initialState: {
     currentUser: null,
-    currentModule: 'ui',
+    currentModule: 'manage',
     currentMenu: '',
   },
   reducers: {
@@ -20,7 +20,7 @@ export const appSlice = createSlice({
     clearAllState: (state, action) => {
       state.currentUser = null;
       state.currentMenu = null;
-      state.currentModule = 'ui';
+      state.currentModule = 'manage';
     },
   },
 });

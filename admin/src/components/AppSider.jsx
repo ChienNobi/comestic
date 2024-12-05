@@ -1,13 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { MdManageSearch } from 'react-icons/md';
 import { CiViewList } from 'react-icons/ci';
 import { BsDatabaseLock } from 'react-icons/bs';
 
 import { selectCurrentModule, setCurrentModule } from '@/store/app';
 import colors from '@/theme/color';
 import { Layout } from 'antd';
-import { APP_MODULES } from '@/commons/constants';
+import {APP_MODULES, ROLES} from '@/commons/constants';
 import fonts from '@/theme/font';
 
 const Container = styled(Layout.Sider)({
@@ -62,10 +61,6 @@ const AppSider = () => {
 
   const currentModule = useSelector(selectCurrentModule);
 
-  const onSelectUI = e => {
-    dispatch(setCurrentModule(APP_MODULES.UI));
-  };
-
   const onSelectManage = e => {
     dispatch(setCurrentModule(APP_MODULES.MANAGE));
   };
@@ -73,6 +68,9 @@ const AppSider = () => {
   const onSelectAdmin = e => {
     dispatch(setCurrentModule(APP_MODULES.ADMIN));
   };
+
+  const user = useSelector((state) => state.app.currentUser);
+  const isAdmin = user.role === ROLES.ADMIN;
 
   return (
     <Container>
@@ -85,13 +83,17 @@ const AppSider = () => {
         <CiViewList size={20} color="white" />
         <ModuleName>Quản lí</ModuleName>
       </ModuleItem>
-      <ModuleItem
-        onClick={onSelectAdmin}
-        selected={currentModule === APP_MODULES.ADMIN}
-      >
-        <BsDatabaseLock size={20} color="white" />
-        <ModuleName>ADMIN</ModuleName>
-      </ModuleItem>
+      {
+        isAdmin &&
+          <ModuleItem
+              onClick={onSelectAdmin}
+              selected={currentModule === APP_MODULES.ADMIN}
+          >
+            <BsDatabaseLock size={20} color="white" />
+            <ModuleName>ADMIN</ModuleName>
+          </ModuleItem>
+      }
+
     </Container>
   );
 };

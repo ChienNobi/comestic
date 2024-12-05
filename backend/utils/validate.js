@@ -1,5 +1,6 @@
 const Joi = require('joi');
 const { PHONE_REGEX, EMAIL_REGEX, FEATURES } = require('../commons/constants');
+const {date} = require("joi");
 
 const validate = (schema, data, isAllOptional = false) => {
   if (isAllOptional) {
@@ -149,6 +150,16 @@ const validateCoupon = (data, isAllOptional) => {
   return validate(schema, data, isAllOptional);
 };
 
+const validateBeautyTreatment = (data, isAllOptional) => {
+    const schema = {
+        title: Joi.string().required(),
+        day: Joi.number().required(),
+        description: Joi.string().required(),
+        status: Joi.boolean().required(),
+    };
+    return validate(schema, data, isAllOptional);
+}
+
 module.exports = {
   validateLogin,
   validateEmployeeLogin,
@@ -161,4 +172,5 @@ module.exports = {
   validateCategory,
   validateReview,
   validateCoupon,
+  validateBeautyTreatment
 };

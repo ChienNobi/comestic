@@ -8,12 +8,6 @@ const tableName = 'Brand';
 
 const beautyTreatment = new Schema(
   {
-    id: {
-      type: String,
-      required: true,
-      unique: true,
-      immutable: true,
-    },
     title: {
       type: String,
     },
@@ -25,10 +19,9 @@ const beautyTreatment = new Schema(
       type: Number,
     },
     status: {
-      type: String,
-      enum: ['active', 'inactive'],
-      default: 'active',
-    }
+      type: Boolean,
+      default: true,
+    },
   },
   {
     timestamps: true,
@@ -82,7 +75,7 @@ beautyTreatment.post('findOneAndUpdate', function (doc) {
   log.save();
 });
 
-brandSchema.post('findOneAndDelete', function (doc) {
+beautyTreatment.post('findOneAndDelete', function (doc) {
   const { userId, id } = this.options;
 
   const log = new Log({

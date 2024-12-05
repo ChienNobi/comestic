@@ -6,15 +6,6 @@ import { APP_MENU, APP_MODULES } from '@/commons/constants';
 import { selectCurrentModule, setCurrentMenu } from '@/store/app';
 import fonts from '@/theme/font';
 
-const menuUIItems = [
-  {
-    key: 'ui',
-    label: 'UI',
-    children: [{ key: APP_MENU.UI_DASHBOARD, label: 'Dashboard' }],
-    type: 'group',
-  },
-];
-
 const menuManageItems = [
   {
     key: 'manage',
@@ -31,6 +22,7 @@ const menuManageItems = [
       },
       { key: APP_MENU.MANAGE_CATEGORY, label: 'Loại sản phẩm' },
       { key: APP_MENU.MANAGE_BRAND, label: 'Hãng sản phẩm' },
+      { key: APP_MENU.MANAGER_BEAUTY_TREATMENT, label: 'Liệu trình làm đẹp' },
     ],
     type: 'group',
   },
@@ -69,8 +61,6 @@ const AppMenu = () => {
 
   const getMenuData = () => {
     switch (currentModule) {
-      case APP_MODULES.UI:
-        return menuUIItems;
       case APP_MODULES.ADMIN:
         return menuAdminItems;
       case APP_MODULES.MANAGE:

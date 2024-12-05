@@ -9,10 +9,6 @@ import {
 
 export const getMenuName = key => {
   switch (key) {
-    // UI
-    case APP_MENU.UI_DASHBOARD:
-      return 'Theo dõi dashboard';
-
     // MANAGE
     case APP_MENU.MANAGE_PRODUCT:
       return 'Quản lý sản phẩm';
@@ -22,6 +18,8 @@ export const getMenuName = key => {
       return 'Quản lý loại sản phẩm';
     case APP_MENU.MANAGE_BRAND:
       return 'Quản lý hãng';
+    case APP_MENU.MANAGE_BEAUTY_TREATMENT:
+      return 'Quản lý liệu trình làm đẹp';
     // ADMIN
     case APP_MENU.ADMIN_EMPLOYEE:
       return 'Quản lý nhân viên';

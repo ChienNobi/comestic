@@ -233,4 +233,19 @@ api.updateUser = async (user) => {
   return api.put(`/user`, user);
 };
 
+api.getBeautyTreatments = async params => {
+  return api.get('/beauty-treatment', { params });
+};
+
+api.createBeautyTreatment = async data => {
+  return api.post('/beauty-treatment', data);
+};
+
+api.deleteBeautyTreatment = async id => {
+  return api.delete('/beauty-treatment/' + id);
+};
+
+api.updateBeautyTreatment = async (id, data) => {
+  return api.put('/beauty-treatment/' + id, data);
+};
 export default api;

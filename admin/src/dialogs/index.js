@@ -7,6 +7,7 @@ import AddCategory from './manage/AddCategory';
 import AddBrand from './manage/AddBrand';
 import AddProduct from './manage/AddProduct';
 import AddCoupon from './manage/AddCoupon';
+import AddBeautyTreatment from "@/dialogs/admin/AddBeautyTreatment.jsx";
 
 NiceModal.register('add-product', AddProduct);
 NiceModal.register('add-employee', AddEmployee);
@@ -15,3 +16,4 @@ NiceModal.register('add-department', AddDepartment);
 NiceModal.register('add-category', AddCategory);
 NiceModal.register('add-brand', AddBrand);
 NiceModal.register('add-coupon', AddCoupon);
+NiceModal.register('add-beauty-treatment', AddBeautyTreatment);
