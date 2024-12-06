@@ -59,18 +59,6 @@ const CouponItem = ({ coupon, handleCopied, copiedCode, copied }) => {
               {dayjs().isAfter(dayjs(coupon.endTime)) ? "Inactive" : "Active"}
             </span>
           </h4>
-          <div className="tp-coupon-info-details">
-            <span>
-              <InfoDetails />
-            </span>
-            <div className="tp-coupon-info-tooltip transition-3">
-              <p>
-                *This coupon code will apply on{" "}
-                <span>Grocery type products</span> and when you shopping more
-                than <span>${coupon.minimumAmount}</span>
-              </p>
-            </div>
-          </div>
         </div>
         <div className="tp-coupon-date">
           <CopyToClipboard

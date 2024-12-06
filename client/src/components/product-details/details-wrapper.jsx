@@ -11,6 +11,7 @@ import { add_cart_product } from "@/redux/features/cartSlice";
 import { add_to_wishlist } from "@/redux/features/wishlist-slice";
 import { add_to_compare } from "@/redux/features/compareSlice";
 import { handleModalClose } from "@/redux/features/productModalSlice";
+import {formatMoney} from "@/utils/formatter";
 
 const DetailsWrapper = ({
   productItem,
@@ -102,19 +103,17 @@ const DetailsWrapper = ({
       <div className="tp-product-details-price-wrapper mb-20">
         {discount > 0 ? (
           <>
-            <span className="tp-product-details-price old-price">${price}</span>
+            <span className="tp-product-details-price old-price">{formatMoney(price)}</span>
             <span className="tp-product-details-price new-price">
-              {" "}
-              $
-              {(
+              {formatMoney(
                 Number(price) -
                 (Number(price) * Number(discount)) / 100
-              ).toFixed(2)}
+              )}
             </span>
           </>
         ) : (
           <span className="tp-product-details-price new-price">
-            ${price.toFixed(2)}
+            {formatMoney(price)}
           </span>
         )}
       </div>
@@ -186,7 +185,7 @@ const DetailsWrapper = ({
           className="tp-product-details-action-sm-btn"
         >
           <CompareTwo />
-          Compare
+          So sánh
         </button>
         <button
           disabled={status === "out-of-stock"}
@@ -195,7 +194,7 @@ const DetailsWrapper = ({
           className="tp-product-details-action-sm-btn"
         >
           <WishlistTwo />
-          Wishlist
+          Danh sách yêu thích
         </button>
         <button type="button" className="tp-product-details-action-sm-btn">
           <AskQuestion />

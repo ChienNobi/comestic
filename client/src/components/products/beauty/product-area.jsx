@@ -41,13 +41,13 @@ const ProductArea = () => {
             <div className="col-lg-6 col-md-8">
               <div className="tp-section-title-wrapper-3 mb-55">
                 <span className="tp-section-title-pre-3">Sản phẩm theo danh mục</span>
-                <h3 className="tp-section-title-3">Best sellers in beauty</h3>
+                <h3 className="tp-section-title-3">Sản phẩm bán chạy</h3>
               </div>
             </div>
             <div className="col-lg-6 col-md-4">
               <div className="tp-product-more-3 text-md-end mb-65">
                 <Link href="/shop" className="tp-btn">
-                  Shop All Products <ArrowRightSmTwo />
+                  Toàn bộ sản phẩm <ArrowRightSmTwo />
                 </Link>
               </div>
             </div>

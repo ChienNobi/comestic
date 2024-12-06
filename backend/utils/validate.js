@@ -156,6 +156,7 @@ const validateBeautyTreatment = (data, isAllOptional) => {
         day: Joi.number().required(),
         description: Joi.string().required(),
         status: Joi.boolean().required(),
+        img: Joi.string().allow('', null),
     };
     return validate(schema, data, isAllOptional);
 }

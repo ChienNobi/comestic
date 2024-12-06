@@ -111,10 +111,6 @@ const ContactForm = () => {
             id="remember"
             type="checkbox"
           />
-          <label htmlFor="remember">
-            Save my name, email, and website in this browser for the next time I
-            comment.
-          </label>
           <ErrorMsg msg={errors.remember?.message} />
         </div>
       </div>

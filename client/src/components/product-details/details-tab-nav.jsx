@@ -130,11 +130,11 @@ const DetailsTabNav = ({ product }) => {
                     {/* reviews */}
                     <div className="tp-product-details-review-list pr-110">
                       <h3 className="tp-product-details-review-title">
-                        Rating & Review
+                        Đánh giá
                       </h3>
                       {reviewData.length === 0 && (
                         <h3 className="tp-product-details-review-title">
-                          There are no reviews yet.
+                          Chưa có đánh giá nào
                         </h3>
                       )}
                       {reviewData.length > 0 &&
@@ -147,15 +147,10 @@ const DetailsTabNav = ({ product }) => {
                 <div className="col-lg-6">
                   <div className="tp-product-details-review-form">
                     <h3 className="tp-product-details-review-form-title">
-                      Review this product
+                      Đánh giá sản phẩm
                     </h3>
-                    <p>
-                      Your email address will not be published. Required fields
-                      are marked *
-                    </p>
-                    {/* form start */}
+                    <p> Địa chỉ email của bạn sẽ không được công bố. Các trường bắt buộc được đánh dấu * </p>
                     <ReviewForm product_id={id} />
-                    {/* form end */}
                   </div>
                 </div>
               </div>

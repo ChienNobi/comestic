@@ -38,15 +38,6 @@ const BlogPostCommentForm = () => {
             </div>
           </div>
         </div>
-        <div className="tp-postbox-details-suggetions mb-20">
-          <div className="tp-postbox-details-remeber">
-            <input id="remeber" type="checkbox" />
-            <label htmlFor="remeber">
-              Save my name, email, and website in this browser for the next time
-              I comment.
-            </label>
-          </div>
-        </div>
         <div className="tp-postbox-details-input-box">
           <button className="tp-postbox-details-input-btn" type="submit">
             Post Comment

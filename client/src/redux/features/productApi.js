@@ -13,14 +13,6 @@ export const productApi = apiSlice.injectEndpoints({
         `${API_URL}/products/product-by-type/${type}?${query}`,
       providesTags: ["ProductType"],
     }),
-    // getOfferProducts: builder.query({
-    //   query: (type) => `${API_URL}/product/offer?type=${type}`,
-    //   providesTags: ["OfferProducts"],
-    // }),
-    // getPopularProductByType: builder.query({
-    //   query: (type) => `${API_URL}/product/popular/${type}`,
-    //   providesTags: ["PopularProducts"],
-    // }),
     getTopRatedProducts: builder.query({
       query: () => `${API_URL}/products/top-rated`,
       providesTags: ["TopRatedProducts"],
@@ -46,8 +38,6 @@ export const productApi = apiSlice.injectEndpoints({
 export const {
   useGetAllProductsQuery,
   useGetProductTypeQuery,
-  // useGetOfferProductsQuery,
-  // useGetPopularProductByTypeQuery,
   useGetTopRatedProductsQuery,
   useGetProductQuery,
   useGetRelatedProductsQuery,

@@ -7,6 +7,11 @@ exports.getAllBeautyTreatment = async ctx => {
     if (ctx.query.keyword) {
       query.title = { $regex: ctx.query.keyword, $options: 'i' };
     }
+
+    if(ctx.query.status) {
+      query.status = ctx.query.status === 'true';
+    }
+
     ctx.body = await BeautyTreatment.find(query);
   } catch (err) {
     ctx.throw(500, err);

@@ -8,66 +8,80 @@ import {
 } from 'antd';
 import NiceModal, { useModal } from '@ebay/nice-modal-react';
 import styled from 'styled-components';
-import { DeleteOutlined } from '@ant-design/icons';
 
 import api from '@/services/api.js';
 import TextEditor from "@/components/TextEditor.jsx";
+import UploadWidget from "@/components/ImageUpload.jsx";
+import {DeleteOutlined} from "@ant-design/icons";
 
 const CustomForm = styled(Form)({
   marginTop: 24,
   marginBottom: 24,
 });
 
+const ImageContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+`;
+
+const ImageWrapper = styled.div`
+  position: relative;
+  width: 80px;
+  height: 80px;
+  padding-bottom: 8px;
+`;
+
+const RemoveButton = styled(DeleteOutlined)`
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 2px 4px;
+  background-color: #f56565;
+  color: white;
+  border: none;
+`;
+
+const StyledImage = styled.img`
+  object-fit: cover;
+  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+`;
+
 
 const AddBeautyTreatment = NiceModal.create(({ data, onSuccess, messageApi }) => {
   const modal = useModal();
   const [form] = Form.useForm();
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [img, setImg] = useState(data?.img || '');
 
   useEffect(() => {
     if (data) {
       form.setFieldsValue({
         ...data,
       });
+      setIsEditMode(true);
     } else {
       form.setFieldsValue({status: true})
     }
   }, [data, form]);
 
   const onFinish = values => {
-    const submitData = { ...values };
-
-    // if (data?.id) {
-    //   const updatedValues = {};
-    //   Object.keys(values).forEach(key => {
-    //     if (typeof values[key] !== 'object') {
-    //       if (values[key] !== data[key]) {
-    //         updatedValues[key] = values[key];
-    //       }
-    //     } else {
-    //       if (JSON.stringify(values[key]) !== JSON.stringify(data[key])) {
-    //         updatedValues[key] = values[key];
-    //       }
-    //     }
-    //   });
-    //   if (!Object.keys(updatedValues).length) {
-    //     return;
-    //   }
-    //
-    //   api
-    //     .updateProduct(data.id, { ...updatedValues })
-    //     .then(() => {
-    //       onSuccess?.();
-    //       modal.hide();
-    //     })
-    //     .catch(error => {
-    //       console.log('Update product error', error);
-    //       if (error?.response?.data?.message === 'Product is already exists') {
-    //         messageApi.error('Mã sản phẩm đã tồn tại');
-    //       } else {
-    //         messageApi.error('Lỗi khi cập nhật sản phẩm');
-    //       }
-    //     });
-    // } else {
+    const submitData = { ...values, img };
+    if (isEditMode) {
+      api
+          .updateBeautyTreatment(data._id, submitData)
+          .then(() => {
+            onSuccess?.();
+            modal.hide();
+          })
+          .catch(error => {
+            console.log('Add product error', error);
+            messageApi.error('Lỗi khi thêm liệu trình làm đẹp');
+          });
+      return
+    }
 
     api
       .createBeautyTreatment(submitData)
@@ -93,7 +107,7 @@ const AddBeautyTreatment = NiceModal.create(({ data, onSuccess, messageApi }) =>
           Hủy
         </Button>,
         <Button form="add-form" key="submit" htmlType="submit" type="primary">
-          {data?.id ? 'Cập nhật' : 'Thêm'}
+          {data?._id ? 'Cập nhật' : 'Thêm'}
         </Button>,
       ]}
     >
@@ -117,8 +131,22 @@ const AddBeautyTreatment = NiceModal.create(({ data, onSuccess, messageApi }) =>
             autoComplete="nope"
             spellCheck={false}
             allowClear
-            disabled={!!data?.id}
           />
+        </Form.Item>
+
+        <Form.Item name="img" label="Cover photo">
+          {img !== '' && (
+              <ImageContainer>
+                <ImageWrapper key={img}>
+                  <RemoveButton
+                      type="button"
+                      onClick={() => setImg('')}
+                  ></RemoveButton>
+                  <StyledImage src={img} alt="img-product" />
+                </ImageWrapper>
+              </ImageContainer>
+          )}
+          <UploadWidget onChange={ (url) => setImg(url) } />
         </Form.Item>
 
         <Form.Item
@@ -152,7 +180,6 @@ const AddBeautyTreatment = NiceModal.create(({ data, onSuccess, messageApi }) =>
         <Form.Item label="Trạng thái" name="status" valuePropName="checked">
           <Switch />
         </Form.Item>
-
       </CustomForm>
     </Modal>
   );

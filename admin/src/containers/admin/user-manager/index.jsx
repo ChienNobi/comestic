@@ -101,29 +101,6 @@ const Role = () => {
     setDetail(record);
   };
 
-  const onEdit = (record, callback) => {
-    NiceModal.show('add-role', {
-      data: record,
-      messageApi,
-      onSuccess: () => {
-        getRoles();
-        messageApi.success('Cập nhật thành công');
-        callback?.();
-      },
-    });
-  };
-
-  const onDelete = record => {
-    api
-      .deleteRole(record.id)
-      .then(() => {
-        getRoles();
-      })
-      .catch(error => {
-        messageApi.error('Xóa thất bại');
-      });
-  };
-
   return (
     <Layout>
       {contextHolder}
@@ -146,10 +123,10 @@ const Role = () => {
             data={data}
             loading={loading}
             onClick={displayDetail}
-            onSearch={onSearch}
+            onSearch={false}
             onAdd={false}
             onEdit={false}
-            onDelete={onDelete}
+            onDelete={false}
             showActions={false}
             showLog={false}
           />

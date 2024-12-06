@@ -39,8 +39,6 @@ const BeautyTreatment = () => {
     const [data, setData] = useState();
     const [detail, setDetail] = useState();
     const [loading, setLoading] = useState(false);
-    const [showLog, setShowLog] = useState(false);
-    const [logs, setLogs] = useState([]);
 
     const [messageApi, contextHolder] = message.useMessage();
 
@@ -90,7 +88,7 @@ const BeautyTreatment = () => {
     };
 
     const onEdit = (record, callback) => {
-        NiceModal.show('add-brand', {
+        NiceModal.show('add-beauty-treatment', {
             data: record,
             messageApi,
             onSuccess: () => {
@@ -103,7 +101,7 @@ const BeautyTreatment = () => {
 
     const onDelete = record => {
         api
-            .deleteBrand(record.id)
+            .deleteBeautyTreatment(record._id)
             .then(() => {
                 getBeautyTreatments();
             })

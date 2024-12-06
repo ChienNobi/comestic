@@ -21,12 +21,10 @@ const ReviewForm = ({ product_id }) => {
   const [rating, setRating] = useState(0);
   const [addReview, {}] = useAddReviewMutation();
 
-  // Catch Rating value
   const handleRating = (rate) => {
     setRating(rate);
   };
 
-  // react hook form
   const {
     register,
     handleSubmit,
@@ -35,7 +33,7 @@ const ReviewForm = ({ product_id }) => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  // on submit
+
   const onSubmit = (data) => {
     if (!user) {
       notifyError("Please login first");
