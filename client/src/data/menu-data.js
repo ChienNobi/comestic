@@ -50,10 +50,10 @@ const menu_data = [
     link: '/blog'
   },
   {
-    id: 6,
-    single_link: true,
-    title: 'Liên hệ',
-    link: '/contact',
+    id: 7,
+    sub_menu: false,
+    title: 'Liệu trình làm đẹp',
+    link: '/beauty-treatments'
   },
 ]
 

@@ -1,8 +1,5 @@
 import React, {useState} from 'react';
-import {GridTab, ListTab} from '@/svg';
-import GridItem from './grid-item';
 import ListItem from './list-item';
-import blogData from '@/data/blog-data';
 import {useGetActiveBeautyTreatmentsQuery} from "@/redux/features/beautyTreatmentApi";
 
 const List = () => {
