@@ -22,7 +22,6 @@ const BlogDetailsArea = ({blog}) => {
           <div className="col-xl-9">
             {/* PostboxDetailsTop */}
             <PostboxDetailsTop blog={blog} />
-            {/* PostboxDetailsTop */}
           </div>
           <div className="col-xl-12">
             <div className="tp-postbox-details-thumb">

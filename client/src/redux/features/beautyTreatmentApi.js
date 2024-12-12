@@ -7,7 +7,10 @@ export const beautyTreatmentApi = apiSlice.injectEndpoints({
         getActiveBeautyTreatments: builder.query({
             query: () => `${API_URL}/beauty-treatment?status=true`,
         }),
+        getBeautyTreatmentById: builder.query({
+            query: (id) => `${API_URL}/beauty-treatment/${id}`,
+        }),
     }),
 });
 
-export const { useGetActiveBeautyTreatmentsQuery } = beautyTreatmentApi;
+export const { useGetActiveBeautyTreatmentsQuery, useGetBeautyTreatmentByIdQuery } = beautyTreatmentApi;

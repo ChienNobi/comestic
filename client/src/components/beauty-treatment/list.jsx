@@ -5,7 +5,7 @@ import ListItem from './list-item';
 import blogData from '@/data/blog-data';
 import {useGetActiveBeautyTreatmentsQuery} from "@/redux/features/beautyTreatmentApi";
 
-const List = ({list_area = false}) => {
+const List = () => {
     const {data} = useGetActiveBeautyTreatmentsQuery();
 
     return (

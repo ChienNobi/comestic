@@ -248,4 +248,8 @@ api.deleteBeautyTreatment = async id => {
 api.updateBeautyTreatment = async (id, data) => {
   return api.put('/beauty-treatment/' + id, data);
 };
+
+api.getBlogs = async params => {
+  return api.get('/blogs', { params });
+};
 export default api;

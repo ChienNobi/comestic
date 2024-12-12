@@ -22,11 +22,11 @@ const ListItem = ({ blog }) => {
             </span>
           </div>
           <h3 className="tp-blog-grid-title">
-            <Link href={`/blog-details/${_id}`}>{title}</Link>
+            <Link href={`/beauty-treatments/${_id}`}>{title}</Link>
           </h3>
 
           <div className="tp-blog-grid-btn">
-            <Link href={`/blog-details/${_id}`} className="tp-link-btn-3">
+            <Link href={`/beauty-treatments/${_id}`} className="tp-link-btn-3">
               Đọc thêm <ArrowRightLong />
             </Link>
           </div>
