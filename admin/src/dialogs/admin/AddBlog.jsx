@@ -4,7 +4,7 @@ import {
   Button,
   Form,
   Input,
-  Switch,
+  Switch, Select,
 } from 'antd';
 import NiceModal, { useModal } from '@ebay/nice-modal-react';
 import styled from 'styled-components';
@@ -54,7 +54,6 @@ const AddBeautyTreatment = NiceModal.create(({ data, onSuccess, messageApi }) =>
   const modal = useModal();
   const [form] = Form.useForm();
   const [isEditMode, setIsEditMode] = useState(false);
-  const [img, setImg] = useState(data?.img || '');
 
   useEffect(() => {
     if (data) {
@@ -68,7 +67,7 @@ const AddBeautyTreatment = NiceModal.create(({ data, onSuccess, messageApi }) =>
   }, [data, form]);
 
   const onFinish = values => {
-    const submitData = { ...values, img };
+    const submitData = { ...values };
     if (isEditMode) {
       api
           .updateBeautyTreatment(data._id, submitData)
@@ -91,13 +90,13 @@ const AddBeautyTreatment = NiceModal.create(({ data, onSuccess, messageApi }) =>
       })
       .catch(error => {
         console.log('Add product error', error);
-        messageApi.error('Lỗi khi thêm liệu trình làm đẹp');
+        messageApi.error('Lỗi khi thêm bài viết');
       });
   };
 
   return (
     <Modal
-      title={data?.id ? 'Chỉnh sửa liệu trình' : 'Thêm mới liệu trình'}
+      title={data?.id ? 'Chỉnh sửa bài viết' : 'Thêm mới bài viết'}
       open={modal.visible}
       onCancel={modal.hide}
       afterClose={modal.remove}
@@ -134,42 +133,22 @@ const AddBeautyTreatment = NiceModal.create(({ data, onSuccess, messageApi }) =>
           />
         </Form.Item>
 
-        <Form.Item name="img" label="Cover photo">
-          {img !== '' && (
-              <ImageContainer>
-                <ImageWrapper key={img}>
-                  <RemoveButton
-                      type="button"
-                      onClick={() => setImg('')}
-                  ></RemoveButton>
-                  <StyledImage src={img} alt="img-product" />
-                </ImageWrapper>
-              </ImageContainer>
-          )}
-          <UploadWidget onChange={ (url) => setImg(url) } />
-        </Form.Item>
-
         <Form.Item
-            name="day"
-            label="Số ngày của liệu trình"
-            rules={[
-              { required: true, message: 'Vui lòng nhập vào số ngày của liệu trình' },
-            ]}
-            initialValue={data?.title || ''}
+            name="category"
+            label="Danh mục"
+            initialValue={data?.category || null}
+            rules={[{ required: true, message: "Vui lòng chọn danh mục" }]}
         >
-          <Input
-              placeholder=""
-              autoComplete="nope"
-              spellCheck={false}
-              allowClear
-              disabled={!!data?.id}
-          />
+          <Select allowClear placeholder="Chọn danh mục">
+            <Select.Option value="beauty">Làm đẹp</Select.Option>
+            <Select.Option value="healthy">Sức khỏe</Select.Option>
+          </Select>
         </Form.Item>
 
         <Form.Item
             name="description"
-            label="Nội dung liệu trình"
-            rules={[{ required: true, message: "Vui lòng nhập vào nội dung liệu trình" }]}
+            label="Nội dung bài viết"
+            rules={[{ required: true, message: "Vui lòng nhập vào nội dung bài viết" }]}
         >
           <TextEditor
               value={form.getFieldValue("description")}

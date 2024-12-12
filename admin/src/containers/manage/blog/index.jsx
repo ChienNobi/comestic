@@ -76,7 +76,7 @@ const Blog = () => {
     };
 
     const onAdd = () => {
-        NiceModal.show('add-beauty-treatment', {
+        NiceModal.show('add-blog', {
             messageApi,
             onSuccess: () => {
                 getBlogs();
