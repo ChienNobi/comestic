@@ -54,6 +54,8 @@ const AddBeautyTreatment = NiceModal.create(({ data, onSuccess, messageApi }) =>
   const modal = useModal();
   const [form] = Form.useForm();
   const [isEditMode, setIsEditMode] = useState(false);
+  const [img, setImg] = useState(data?.img || '');
+
 
   useEffect(() => {
     if (data) {
@@ -67,23 +69,23 @@ const AddBeautyTreatment = NiceModal.create(({ data, onSuccess, messageApi }) =>
   }, [data, form]);
 
   const onFinish = values => {
-    const submitData = { ...values };
+    const submitData = { ...values, img };
     if (isEditMode) {
       api
-          .updateBeautyTreatment(data._id, submitData)
+          .updateBlogs(data._id, submitData)
           .then(() => {
             onSuccess?.();
             modal.hide();
           })
           .catch(error => {
             console.log('Add product error', error);
-            messageApi.error('Lỗi khi thêm liệu trình làm đẹp');
+            messageApi.error('Lỗi khi thêm blog');
           });
       return
     }
 
     api
-      .createBeautyTreatment(submitData)
+      .createBlogs(submitData)
       .then(() => {
         onSuccess?.();
         modal.hide();
@@ -143,6 +145,21 @@ const AddBeautyTreatment = NiceModal.create(({ data, onSuccess, messageApi }) =>
             <Select.Option value="beauty">Làm đẹp</Select.Option>
             <Select.Option value="healthy">Sức khỏe</Select.Option>
           </Select>
+        </Form.Item>
+
+        <Form.Item name="img" label="Cover photo">
+          {img !== '' && (
+              <ImageContainer>
+                <ImageWrapper key={img}>
+                  <RemoveButton
+                      type="button"
+                      onClick={() => setImg('')}
+                  ></RemoveButton>
+                  <StyledImage src={img} alt="img-product" />
+                </ImageWrapper>
+              </ImageContainer>
+          )}
+          <UploadWidget onChange={ (url) => setImg(url) } />
         </Form.Item>
 
         <Form.Item

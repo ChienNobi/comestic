@@ -16,9 +16,12 @@ const columns = [
     },
     {
         title: 'Danh mục',
-        dataIndex: 'category_id',
+        dataIndex: 'category',
         align: 'center',
         width: 60,
+        render: category => {
+            return category === 'beauty' ? 'Làm đẹp' : 'Sức khỏe';
+        },
     },
     {
         title: 'Trạng thái',
@@ -37,7 +40,6 @@ const Blog = () => {
     const [data, setData] = useState();
     const [detail, setDetail] = useState();
     const [loading, setLoading] = useState(false);
-
     const [messageApi, contextHolder] = message.useMessage();
 
     const getBlogs = query => {
@@ -99,7 +101,7 @@ const Blog = () => {
 
     const onDelete = record => {
         api
-            .deleteBeautyTreatment(record._id)
+            .deleteBlogs(record._id)
             .then(() => {
                 getBlogs();
             })

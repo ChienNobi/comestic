@@ -252,4 +252,16 @@ api.updateBeautyTreatment = async (id, data) => {
 api.getBlogs = async params => {
   return api.get('/blogs', { params });
 };
+
+api.createBlogs = async data => {
+  return api.post('/blogs', data);
+};
+
+api.deleteBlogs = async id => {
+  return api.delete('/blogs/' + id);
+};
+
+api.updateBlogs = async (id, data) => {
+  return api.put('/blogs/' + id, data);
+};
 export default api;

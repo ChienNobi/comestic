@@ -4,15 +4,15 @@ import HeaderTwo from "@/layout/headers/header-2";
 import Wrapper from "@/layout/wrapper";
 import Footer from "@/layout/footers/footer";
 import SectionTitle from "@/components/blog/blog-grid/section-title";
-import BeautyTreatment from "@/components/beauty-treatment/list";
+import List from "@/components/blog/list";
 
 const BlogListPage = () => {
   return (
     <Wrapper>
-      <SEO pageTitle="Liệu trình làm đẹp" />
+      <SEO pageTitle="Blog" />
       <HeaderTwo style_2={true} />
-      <SectionTitle text="Liệu trình làm đẹp"/>
-      <BeautyTreatment list_area={true} />
+      <SectionTitle text="Blog"/>
+      <List list_area={true} />
       <Footer primary_style={true} />
     </Wrapper>
   );

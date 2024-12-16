@@ -161,6 +161,17 @@ const validateBeautyTreatment = (data, isAllOptional) => {
     return validate(schema, data, isAllOptional);
 }
 
+const validateBlog = (data, isAllOptional) => {
+  const schema = {
+    title: Joi.string().required(),
+    category: Joi.string().required(),
+    description: Joi.string().required(),
+    status: Joi.boolean().required(),
+    img: Joi.string().allow('', null),
+  };
+  return validate(schema, data, isAllOptional);
+}
+
 module.exports = {
   validateLogin,
   validateEmployeeLogin,
@@ -173,5 +184,6 @@ module.exports = {
   validateCategory,
   validateReview,
   validateCoupon,
-  validateBeautyTreatment
+  validateBeautyTreatment,
+  validateBlog
 };

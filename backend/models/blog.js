@@ -3,19 +3,16 @@ const {TABLE_ACTIONS} = require('../commons/constants');
 const Log = require('./log');
 
 const Schema = mongoose.Schema;
-const tableName = 'Beauty_treatment';
+const tableName = 'Blog';
 
-const beautyTreatment = new Schema(
+const blog = new Schema(
     {
         title: {
             type: String,
         },
-        description: {
+        category: {
             type: String,
             trim: true,
-        },
-        day: {
-            type: Number,
         },
         status: {
             type: Boolean,
@@ -25,13 +22,17 @@ const beautyTreatment = new Schema(
             type: String,
             default: ''
         },
+        description: {
+            type: String,
+            trim: true,
+        }
     },
     {
         timestamps: true,
     },
 );
 
-beautyTreatment.post('save', async function (doc) {
+blog.post('save', async function (doc) {
     const log = new Log({
         tableName,
         action: TABLE_ACTIONS.ADD,
@@ -50,9 +51,9 @@ const logFieldsExcluded = [
     'searchIndex',
 ];
 
-beautyTreatment.post('findOneAndUpdate', function (doc) {
+blog.post('findOneAndUpdate', function (doc) {
     const {userId} = this.options;
-    const updated = Object.keys(beautyTreatment.paths).reduce((prev, curr) => {
+    const updated = Object.keys(blog.paths).reduce((prev, curr) => {
         if (
             !logFieldsExcluded.includes(curr) &&
             this.getUpdate().$set[curr] !== null &&
@@ -77,19 +78,6 @@ beautyTreatment.post('findOneAndUpdate', function (doc) {
     log.save();
 });
 
-beautyTreatment.post('findOneAndDelete', function (doc) {
-    const {userId, _id} = this.options;
+const Blog = mongoose.model('Blog', blog);
 
-    const log = new Log({
-        tableName,
-        action: TABLE_ACTIONS.DELETE,
-        userId,
-        recordId: _id,
-        time: Date.now(),
-    });
-    log.save();
-});
-
-const BeautyTreatment = mongoose.model('BeautyTreatment', beautyTreatment);
-
-module.exports = BeautyTreatment;
+module.exports = Blog;

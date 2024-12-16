@@ -8,7 +8,7 @@ const ListItem = ({ blog }) => {
   return (
     <div className="tp-blog-list-item d-md-flex d-lg-block d-xl-flex">
       <div className="tp-blog-list-thumb">
-        <Link href={`/beauty-treatments/${_id}`}>
+        <Link href={`/blog/${_id}`}>
           <img src={img} alt={title} />
         </Link>
       </div>
@@ -22,11 +22,11 @@ const ListItem = ({ blog }) => {
             </span>
           </div>
           <h3 className="tp-blog-grid-title">
-            <Link href={`/beauty-treatments/${_id}`}>{title}</Link>
+            <Link href={`/blog/${_id}`}>{title}</Link>
           </h3>
 
           <div className="tp-blog-grid-btn">
-            <Link href={`/beauty-treatments/${_id}`} className="tp-link-btn-3">
+            <Link href={`/blog/${_id}`} className="tp-link-btn-3">
               Đọc thêm <ArrowRightLong />
             </Link>
           </div>
