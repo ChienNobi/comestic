@@ -20,6 +20,7 @@ export const APP_MENU = {
   ADMIN_DEPARTMENT: 'admin_department',
   USER_MANAGER: 'user_manager',
   BLOG: 'blog',
+  CALENDAR: 'calendar',
 };
 
 export const ROLE_FEATURES = {

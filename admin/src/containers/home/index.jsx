@@ -28,6 +28,7 @@ import Coupon from '../manage/coupon';
 import UserManager from "@/containers/admin/user-manager/index.jsx";
 import BeautyTreatment from "@/containers/manage/beauty-treatment/index.jsx";
 import Blog from "@/containers/manage/blog/index.jsx";
+import BeautyTreatmentCalendar from "@/containers/manage/calendar/index.jsx";
 
 const EmptyLayout = styled.div({
   width: '100%',
@@ -53,6 +54,8 @@ const getContentLayout = key => {
         return <BeautyTreatment />;
     case APP_MENU.BLOG:
         return <Blog />;
+    case APP_MENU.CALENDAR:
+        return <BeautyTreatmentCalendar />;
 
     // ADMIN
     case APP_MENU.ADMIN_ROLE:
