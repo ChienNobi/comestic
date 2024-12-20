@@ -3,7 +3,7 @@ const {TABLE_ACTIONS} = require('../commons/constants');
 const Log = require('./log');
 
 const Schema = mongoose.Schema;
-const tableName = 'Calendar';
+const tableName = 'calendarSchema';
 
 const calendarSchema = new Schema(
     {
@@ -14,13 +14,13 @@ const calendarSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: 'BeautyTreatment',
         },
-        user_phone: {
-            type: String,
-            required: true,
+        user_id: {
+            type: Schema.Types.ObjectId,
+            ref: 'User',
         },
-        employee_phone: {
-            type: String,
-            required: true,
+        employee_id: {
+            type: Schema.Types.ObjectId,
+            ref: 'Employee',
         },
         date: {
             type: Date,
@@ -91,6 +91,6 @@ calendarSchema.post('findOneAndDelete', function (doc) {
     log.save();
 });
 
-const CalendarSchema = mongoose.model('calendarSchema', calendarSchema);
+const CalendarSchema = mongoose.model(tableName, calendarSchema);
 
 module.exports = CalendarSchema;

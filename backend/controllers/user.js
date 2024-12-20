@@ -10,7 +10,7 @@ exports.getAllUsers = async ctx => {
     if (ctx.query.keyword) {
       query.searchIndex = { $regex: ctx.query.keyword, $option: 'i' };
     }
-    const users = await User.find(query).select('-__v, -_id').lean();
+    const users = await User.find(query).select('-__v').lean();
     ctx.body = users;
   } catch (error) {
     ctx.throw(500, error);

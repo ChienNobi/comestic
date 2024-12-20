@@ -2,9 +2,10 @@ import {Alert, Badge, Calendar, message} from 'antd';
 import {useEffect, useState} from "react";
 import dayjs from "dayjs";
 import NiceModal from "@ebay/nice-modal-react";
+import api from "@/services/api.js";
 
 const BeautyTreatmentCalendar = () => {
-    const [value, setValue] = useState(() => dayjs());
+    const [key, setKey] = useState(0);
     const [events, setEvents] = useState([]);
     const [messageApi, contextHolder] = message.useMessage();
 
@@ -13,43 +14,56 @@ const BeautyTreatmentCalendar = () => {
             NiceModal.show('add-calendar', {
                 data: { date: newValue },
                 messageApi,
-                onSuccess: () => {
-                    messageApi.success('Thêm thành công');
-                },
+                onSuccess: () => refresh(),
             });
         }
     };
-    const onPanelChange = (newValue) => {
-        setValue(newValue);
+
+    const onEventClick = (e, selectedItem) => {
+        e.stopPropagation();
+        e.preventDefault();
+        NiceModal.show('add-calendar', {
+            data: events.find(item => item._id === selectedItem._id),
+            messageApi,
+            onSuccess: () => refresh(),
+        });
+    }
+    const getListData = async () => {
+        const result = await api.getCalendars();
+        const data = result?.data?.map(item => {
+            return {
+                dateFormated: dayjs(item.date).format('YYYY-MM-DD'),
+                date: dayjs(item.date),
+                content: item.title,
+                _id: item._id,
+                user_id: item.user_id,
+                employee_id: item.employee_id,
+                beauty_treatment_id: item.beauty_treatment_id,
+            }
+        })
+        setEvents(data || [])
     };
 
-    const onEventClick = () => {
-        console.log('event click');
+    const refresh = async () => {
+        await getListData();
+        setKey(key + 1);
     }
 
     useEffect(() => {
-        setEvents([
-            { "date": "2024-12-20", "event": "Meeting with Team A" },
-            { "date": "2024-12-20", "event": "Meeting with Team B" },
-            { "date": "2024-12-20", "event": "Meeting with Team C" },
-            { "date": "2024-12-20", "event": "Meeting with Team D" },
-            { "date": "2024-12-20", "event": "Meeting with Team E" },
-            { "date": "2024-12-22", "event": "Project Deadline" }
-        ])
+        getListData();
     }, []);
-    const getListData = (value) => {
-        const dateString = value.format('YYYY-MM-DD');
-        return events
-            .filter(event => event.date === dateString)
-            .map(event => ({ type: 'success', content: event.event }));
-    };
 
     const dateCellRender = (value) => {
-        const listData = getListData(value);
+        const dateString = value.format('YYYY-MM-DD');
+        const data = events
+            .filter(event => event.dateFormated === dateString) || [];
         return (
             <div className="events">
-                {listData.map((item, index) => (
-                    <div key={index} style={{ background: "#caeaff", marginBottom: '8px' }} onClick={onEventClick}>
+                {data.map((item, index) => (
+                    <div
+                        key={index}
+                        style={{ background: "#caeaff", marginBottom: '8px' }}
+                        onClick={(e) => onEventClick(e, item)}>
                         {item.content}
                     </div>
                 ))}
@@ -59,7 +73,7 @@ const BeautyTreatmentCalendar = () => {
 
     return (
         <>
-            <Calendar value={value} onSelect={onSelect} onPanelChange={onPanelChange} cellRender={dateCellRender}/>
+            <Calendar onSelect={onSelect} cellRender={dateCellRender} key={key}/>
         </>
     );
 }

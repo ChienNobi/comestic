@@ -264,4 +264,17 @@ api.deleteBlogs = async id => {
 api.updateBlogs = async (id, data) => {
   return api.put('/blogs/' + id, data);
 };
+
+api.getCalendars = async params => {
+  return api.get('/calendars');
+}
+
+api.createCalendar = async data => {
+    return api.post('/calendars', data);
+}
+
+api.updateCalendar = async (id, data) => {
+  return api.put('/calendars/' + id, data);
+};
+
 export default api;

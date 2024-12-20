@@ -18,7 +18,7 @@ exports.getAllEmployees = async ctx => {
       query.searchIndex = { $regex: ctx.query.keyword, $options: 'i' };
     }
     const employees = await Employee.find(query)
-      .select('-__v -_id')
+      .select('-__v')
       .populate('departmentData', '-_id id name')
       .populate('roleData', '-_id id name')
       .lean();
@@ -89,13 +89,6 @@ exports.updateEmployee = async ctx => {
       ctx.throw(400, error.details[0].message);
     }
 
-    if (data.department) {
-      const department = await Department.findOne({ id: data.department });
-      if (!department) {
-        ctx.throw(400, 'Department not found');
-      }
-    }
-
     if (data.role) {
       const role = await Role.findOne({ id: data.role });
       if (!role) {
@@ -152,7 +145,7 @@ exports.login = async ctx => {
   }
 
   const { phone, password } = ctx.request.body;
-  const employee = await Employee.findOne({ phone }).select('-_id -__v').lean();
+  const employee = await Employee.findOne({ phone }).select('-__v').lean();
   if (!employee) {
     ctx.throw(400, 'Invalid phone or password');
   }
@@ -163,7 +156,7 @@ exports.login = async ctx => {
   }
 
   const token = jwt.sign(
-    { id: employee.id, role: employee.role },
+    { id: employee.id, role: employee.role, _id: employee._id },
     process.env.JWT_SECRET_KEY,
     { expiresIn: process.env.JWT_EXPIRE_TIME },
   );

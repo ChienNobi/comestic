@@ -4,7 +4,7 @@ import {
   Button,
   Form,
   Select,
-  DatePicker,
+  DatePicker, Input,
 } from 'antd';
 import NiceModal, { useModal } from '@ebay/nice-modal-react';
 import styled from 'styled-components';
@@ -41,7 +41,7 @@ const AddCalendar = NiceModal.create(({ data, onSuccess, messageApi }) => {
     api.getUsers().then(response => {
       response.data = response.data.map(item => ({
         label: item.name,
-        value: item.phone,
+        value: item._id,
       }));
       setUsers(response.data);
     }).catch(error => {
@@ -52,7 +52,7 @@ const AddCalendar = NiceModal.create(({ data, onSuccess, messageApi }) => {
     api.getEmployees().then(response => {
       response.data = response.data.map(item => ({
         label: item.name,
-        value: item.phone,
+        value: item._id,
       }));
         setEmployees(response.data);
     }).catch(error => {
@@ -63,13 +63,11 @@ const AddCalendar = NiceModal.create(({ data, onSuccess, messageApi }) => {
 
 
   useEffect(() => {
-    if (data) {
+    if (data?._id) {
       form.setFieldsValue({
         ...data,
       });
       setIsEditMode(true);
-    } else {
-      form.setFieldsValue({status: true})
     }
   }, [data, form]);
 
@@ -77,7 +75,7 @@ const AddCalendar = NiceModal.create(({ data, onSuccess, messageApi }) => {
     const submitData = { ...values };
     if (isEditMode) {
       api
-          .updateBlogs(data._id, submitData)
+          .updateCalendar(data._id, submitData)
           .then(() => {
             onSuccess?.();
             modal.hide();
@@ -90,20 +88,19 @@ const AddCalendar = NiceModal.create(({ data, onSuccess, messageApi }) => {
     }
 
     api
-      .createBlogs(submitData)
+      .createCalendar(submitData)
       .then(() => {
         onSuccess?.();
         modal.hide();
       })
       .catch(error => {
-        console.log('Add product error', error);
-        messageApi.error('Lỗi khi thêm bài viết');
+        messageApi.error('Lỗi khi thêm mới lịch hẹn');
       });
   };
 
   return (
     <Modal
-      title={data?.id ? 'Chỉnh sửa bài viết' : 'Thêm mới Lịch'}
+      title={data?._id ? 'Chỉnh sửa lịch hẹn' : 'Thêm mới Lịch'}
       open={modal.visible}
       onCancel={modal.hide}
       afterClose={modal.remove}
@@ -128,30 +125,34 @@ const AddCalendar = NiceModal.create(({ data, onSuccess, messageApi }) => {
             name="title"
             label="Tiêu đề"
             rules={[{ required: true, message: 'Vui lòng chọn tiêu đề' }]}
+            initialValue={data?.content}
         >
-          <Select allowClear placeholder="Chọn tiêu đề" options={beautyTreatments} />
+          <Input placeholder="Điền vào tên lịch trình"/>
         </Form.Item>
 
         <Form.Item
             name="beauty_treatment_id"
             label="Chọn liệu trình"
             rules={[{ required: true, message: 'Vui lòng chọn liệu trình' }]}
+            initialValue={data?.beauty_treatment_id}
         >
           <Select allowClear placeholder="Chọn liệu trình" options={beautyTreatments} />
         </Form.Item>
 
         <Form.Item
-            name="user_phone"
+            name="user_id"
             label="Khách hàng"
             rules={[{ required: true, message: "Vui lòng chọn khách hàng" }]}
+            initialValue={data?.user_id}
         >
           <Select placeholder="Chọn khách hàng" options={users}/>
         </Form.Item>
 
         <Form.Item
-            name="employee_phone"
+            name="employee_id"
             label="Nhân viên"
             rules={[{ required: true, message: "Vui lòng chọn nhân viên" }]}
+            initialValue={data?.employee_id}
         >
           <Select placeholder="Chọn nhân viên" options={employees}/>
         </Form.Item>
@@ -159,12 +160,10 @@ const AddCalendar = NiceModal.create(({ data, onSuccess, messageApi }) => {
         <Form.Item
             name="date"
             label="Ngày"
-            initialValue={data?.date}
             rules={[{ required: true, message: "Vui lòng chọn ngày" }]}
         >
-          <DatePicker allowClear placeholder="Chọn ngày" size="large"/>
+          <DatePicker placeholder="Chọn ngày" size="large"/>
         </Form.Item>
-
       </CustomForm>
     </Modal>
   );
