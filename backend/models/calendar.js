@@ -22,6 +22,10 @@ const calendarSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: 'Employee',
         },
+        created_by: {
+            type: Schema.Types.ObjectId,
+            ref: 'Employee',
+        },
         date: {
             type: Date,
             default: Date.now,

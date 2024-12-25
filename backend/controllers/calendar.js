@@ -5,8 +5,12 @@ const {ROLES} = require("../commons/constants");
 exports.getAllCalendars = async ctx => {
   try {
     const query = {};
-    if(ctx.state.user.role === ROLES.EMPLOYEE) {
-      query.employee_id = ctx.state.user._id;
+    if(ctx.state?.user?.role === ROLES.EMPLOYEE) {
+      query.$or = [{ created_by: ctx.state.user._id }, { employee_id: ctx.state.user._id }];
+    }
+
+    if(ctx.query.user_id) {
+        query.user_id = ctx.query.user_id;
     }
 
     if (ctx.query.keyword) {
@@ -34,9 +38,10 @@ exports.getCalendarById = async ctx => {
 exports.createCalendar = async ctx => {
   try {
     const data = ctx.request.body;
+    data.created_by = ctx.state.user._id;
 
     ctx.body = await new Calendar({
-      ...ctx.request.body,
+      ...data,
     }).save();
   } catch (err) {
     ctx.throw(500, err);
