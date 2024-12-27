@@ -18,7 +18,7 @@ export const getMenuName = key => {
       return 'Quản lý loại sản phẩm';
     case APP_MENU.MANAGE_BRAND:
       return 'Quản lý hãng';
-    case APP_MENU.MANAGE_BEAUTY_TREATMENT:
+    case APP_MENU.MANAGER_BEAUTY_TREATMENT:
       return 'Quản lý liệu trình làm đẹp';
     // ADMIN
     case APP_MENU.ADMIN_EMPLOYEE:
@@ -27,8 +27,8 @@ export const getMenuName = key => {
       return 'Quản lý vai trò';
     case APP_MENU.USER_MANAGER:
       return 'Quản lý người dùng';
-    case APP_MENU.ADMIN_DEPARTMENT:
-      return 'Quản lý bộ phận';
+    case APP_MENU.BLOG:
+      return 'Quản lý Blog';
   }
 };
 

@@ -146,26 +146,31 @@ const MasterTable = ({
       <Filter>
         {showSearch && (
           <>
-            <Space className="row">
-              <Search
-                addonBefore={<SearchOutlined />}
-                placeholder="Nhập nội dung cần tìm"
-                onChange={onSearchChange}
-                allowClear
-                spellCheck={false}
-                autoComplete="nope"
-              />
-              {options && (
-                <OptionSelect
-                  placeholder="Chọn nhà cung cấp"
-                  onChange={onSelect}
-                  options={options}
-                  showSearch
-                  allowClear
-                />
-              )}
-              <FilterButton icon={<FilterOutlined />}>Bộ lọc</FilterButton>
-            </Space>
+            {showFilter && (
+                <>
+                  <Space className="row">
+                    <Search
+                        addonBefore={<SearchOutlined />}
+                        placeholder="Nhập nội dung cần tìm"
+                        onChange={onSearchChange}
+                        allowClear
+                        spellCheck={false}
+                        autoComplete="nope"
+                    />
+                    {options && (
+                        <OptionSelect
+                            placeholder="Chọn nhà cung cấp"
+                            onChange={onSelect}
+                            options={options}
+                            showSearch
+                            allowClear
+                        />
+                    )}
+                    <FilterButton icon={<FilterOutlined />}>Bộ lọc</FilterButton>
+                  </Space>
+
+                </>
+            )}
             <Space>
               {onAdd && (
                 <Button type="primary" icon={<PlusOutlined />} onClick={onAdd}>

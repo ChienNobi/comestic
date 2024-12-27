@@ -12,7 +12,7 @@ exports.getAllProducts = async ctx => {
       .populate('brandData', '-_id id name')
       .populate('categoryData', '-_id id name')
       .populate('reviewData', '-__v -id')
-      .lean({ virtuals: true }); // Thêm { virtuals: true }
+      .lean({ virtuals: true });
     ctx.body = products;
   } catch (err) {
     ctx.throw(500, err);
@@ -29,11 +29,11 @@ exports.getProductById = async ctx => {
         path: 'reviewData',
         select: '-__v',
         populate: {
-          path: 'userId', // Đảm bảo trường này trỏ đến userId trong Review
-          select: 'name imageURL', // Lấy thông tin name và imageURL từ User
+          path: 'userId',
+          select: 'name imageURL',
         },
       })
-      .lean({ virtuals: true }); // Thêm { virtuals: true }
+      .lean({ virtuals: true });
 
     if (!product) {
       ctx.throw(404, 'Product not found');

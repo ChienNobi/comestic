@@ -277,4 +277,12 @@ api.updateCalendar = async (id, data) => {
   return api.put('/calendars/' + id, data);
 };
 
+api.createCalendarBeauty = async data => {
+  return api.post('/calendar-beauty', data);
+}
+
+api.getAllCalendarBeauty = async () => {
+  return api.get('/calendar-beauty');
+};
+
 export default api;

@@ -25,6 +25,7 @@ const menuManageItems = [
       { key: APP_MENU.MANAGER_BEAUTY_TREATMENT, label: 'Liệu trình làm đẹp' },
       { key: APP_MENU.BLOG, label: 'Blog' },
       { key: APP_MENU.CALENDAR, label: 'Lịch' },
+      { key: APP_MENU.BEAUTY_CALENDAR, label: 'Đăng ký liệu trình' },
     ],
     type: 'group',
   },

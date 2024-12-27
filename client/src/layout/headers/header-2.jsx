@@ -95,14 +95,6 @@ const HeaderTwo = ({ style_2 = false }) => {
                       <div className="tp-header-action d-flex align-items-center ml-30">
                         <div className="tp-header-action-item d-none d-lg-block">
                           <Link
-                              href="/compare"
-                              className="tp-header-action-btn"
-                          >
-                            <Compare/>
-                          </Link>
-                        </div>
-                        <div className="tp-header-action-item d-none d-lg-block">
-                          <Link
                               href="/wishlist"
                               className="tp-header-action-btn"
                           >

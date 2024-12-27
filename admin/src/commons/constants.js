@@ -21,6 +21,7 @@ export const APP_MENU = {
   USER_MANAGER: 'user_manager',
   BLOG: 'blog',
   CALENDAR: 'calendar',
+  BEAUTY_CALENDAR: 'beauty_calendar',
 };
 
 export const ROLE_FEATURES = {

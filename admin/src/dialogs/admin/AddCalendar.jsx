@@ -131,21 +131,21 @@ const AddCalendar = NiceModal.create(({ data, onSuccess, messageApi }) => {
         </Form.Item>
 
         <Form.Item
-            name="beauty_treatment_id"
-            label="Chọn liệu trình"
-            rules={[{ required: true, message: 'Vui lòng chọn liệu trình' }]}
-            initialValue={data?.beauty_treatment_id}
-        >
-          <Select allowClear placeholder="Chọn liệu trình" options={beautyTreatments} />
-        </Form.Item>
-
-        <Form.Item
             name="user_id"
             label="Khách hàng"
             rules={[{ required: true, message: "Vui lòng chọn khách hàng" }]}
             initialValue={data?.user_id}
         >
           <Select placeholder="Chọn khách hàng" options={users}/>
+        </Form.Item>
+
+        <Form.Item
+            name="beauty_treatment_id"
+            label="Chọn liệu trình"
+            rules={[{ required: true, message: 'Vui lòng chọn liệu trình' }]}
+            initialValue={data?.beauty_treatment_id}
+        >
+          <Select allowClear placeholder="Chọn liệu trình" options={beautyTreatments} />
         </Form.Item>
 
         <Form.Item
