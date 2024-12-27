@@ -10,6 +10,8 @@ import NiceModal, { useModal } from '@ebay/nice-modal-react';
 import styled from 'styled-components';
 
 import api from '@/services/api.js';
+import {selectCurrentUser} from "@/store/app.js";
+import {useSelector} from "react-redux";
 
 const CustomForm = styled(Form)({
   marginTop: 24,
@@ -24,8 +26,9 @@ const AddCalendar = NiceModal.create(({ data, onSuccess, messageApi }) => {
   const [beautyTreatments, setBeautyTreatment] = useState([]);
   const [users, setUsers] = useState([]);
   const [employees, setEmployees] = useState([]);
+  const [disabled, setDisabled] = useState(false);
 
-
+  const currentUser = useSelector(selectCurrentUser);
   useEffect(() => {
     api.getBeautyTreatments().then(response => {
       response.data = response.data.map(item => ({
@@ -68,6 +71,10 @@ const AddCalendar = NiceModal.create(({ data, onSuccess, messageApi }) => {
         ...data,
       });
       setIsEditMode(true);
+    } else {
+      if(currentUser?.role !== 'admin') {
+        setDisabled(true)
+      }
     }
   }, [data, form]);
 
@@ -154,7 +161,7 @@ const AddCalendar = NiceModal.create(({ data, onSuccess, messageApi }) => {
             rules={[{ required: true, message: "Vui lòng chọn nhân viên" }]}
             initialValue={data?.employee_id}
         >
-          <Select placeholder="Chọn nhân viên" options={employees}/>
+          <Select placeholder="Chọn nhân viên" options={employees} />
         </Form.Item>
 
         <Form.Item

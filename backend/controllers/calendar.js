@@ -5,7 +5,6 @@ const {ROLES} = require("../commons/constants");
 exports.getAllCalendars = async ctx => {
   try {
     const query = {};
-    console.log(ctx.state?.user);
     if(ctx.state?.user?.role === ROLES.EMPLOYEE) {
       query.$or = [{ created_by: ctx.state.user._id }, { employee_id: ctx.state.user._id }];
     }
