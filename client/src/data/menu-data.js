@@ -12,30 +12,10 @@ const menu_data = [
   },
   {
     id: 2,
-    products: true,
+    single_link: true,
     title: 'Sản phẩm',
     link: '/shop',
-    product_pages: [
-      {
-        title: 'eCommerce',
-        link: '/shop',
-        mega_menus: [
-          { title: 'Giỏ hàng', link: '/cart' },
-          { title: 'So sánh', link: '/compare' },
-          { title: 'Wishlist', link: '/wishlist' },
-          { title: 'Thanh toán', link: '/checkout' },
-          { title: 'Tài khoản', link: '/profile' },
-        ]
-      },
-      {
-        title: 'More Pages',
-        link: '/shop',
-        mega_menus: [
-          { title: 'Đăng nhập', link: '/login' },
-          { title: 'Đăng ký', link: '/register' },
-        ]
-      },
-    ]
+    sub_menu: false,
   },
   {
     id: 4,

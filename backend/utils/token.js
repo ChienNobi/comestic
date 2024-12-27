@@ -7,7 +7,8 @@ exports.generateToken = user => {
       name: user.name,
       email: user.email,
       password: user.password,
-      role: ROLES.USER
+      role: ROLES.USER,
+        _id: user._id,
     },
     process.env.JWT_SECRET_KEY,
     {

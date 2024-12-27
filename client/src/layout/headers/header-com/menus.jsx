@@ -45,13 +45,11 @@ const Menus = () => {
       </div>
     );
   } else {
-    // If there are no products or an error occurs, set content to an empty array
     content = [];
   }
   return (
     <ul>
       {menu_data.map((menu) =>
-
         menu.homes ? (
           <li key={menu.id}>
             <Link href={menu.link}>{menu.title}</Link>

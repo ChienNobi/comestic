@@ -8,12 +8,10 @@ import logo from "@assets/img/logo/logo-black.svg";
 import useSticky from "@/hooks/use-sticky";
 import useCartInfo from "@/hooks/use-cart-info";
 import { openCartMini } from "@/redux/features/cartSlice";
-import HeaderTopRight from "./header-com/header-top-right";
 import CartMiniSidebar from "@/components/common/cart-mini-sidebar";
 import {
   CartTwo,
   Compare,
-  Facebook,
   Menu,
   PhoneTwo,
   Wishlist,
@@ -21,9 +19,9 @@ import {
 } from "@/svg";
 import useSearchFormSubmit from "@/hooks/use-search-form-submit";
 import OffCanvas from "@/components/common/off-canvas";
-
 const HeaderTwo = ({ style_2 = false }) => {
   const { wishlist } = useSelector((state) => state.wishlist);
+  const { user } = useSelector((state) => state?.auth);
   const [isOffCanvasOpen, setIsCanvasOpen] = useState(false);
   const { setSearchText, handleSubmit, searchText } = useSearchFormSubmit();
   const { quantity } = useCartInfo();
@@ -43,7 +41,7 @@ const HeaderTwo = ({ style_2 = false }) => {
                 <div className="col-md-6">
                   <div className="tp-header-info d-flex align-items-center">
                     <div className="tp-header-info-item">
-                      <a href="tel:402-763-282-46">
+                      <a href="tel:0988888888">
                         <span>
                           <PhoneTwo />
                         </span>{" "}
@@ -97,18 +95,18 @@ const HeaderTwo = ({ style_2 = false }) => {
                       <div className="tp-header-action d-flex align-items-center ml-30">
                         <div className="tp-header-action-item d-none d-lg-block">
                           <Link
-                            href="/compare"
-                            className="tp-header-action-btn"
+                              href="/compare"
+                              className="tp-header-action-btn"
                           >
-                            <Compare />
+                            <Compare/>
                           </Link>
                         </div>
                         <div className="tp-header-action-item d-none d-lg-block">
                           <Link
-                            href="/wishlist"
-                            className="tp-header-action-btn"
+                              href="/wishlist"
+                              className="tp-header-action-btn"
                           >
-                            <Wishlist />
+                            <Wishlist/>
                             <span className="tp-header-action-badge">
                               {wishlist.length}
                             </span>
@@ -116,22 +114,48 @@ const HeaderTwo = ({ style_2 = false }) => {
                         </div>
                         <div className="tp-header-action-item">
                           <button
-                            onClick={() => dispatch(openCartMini())}
-                            className="tp-header-action-btn cartmini-open-btn"
+                              onClick={() => dispatch(openCartMini())}
+                              className="tp-header-action-btn cartmini-open-btn"
                           >
-                            <CartTwo />
+                            <CartTwo/>
                             <span className="tp-header-action-badge">
                               {quantity}
                             </span>
                           </button>
                         </div>
+
+                        {user ? (
+                            <>
+                              <div className="tp-header-action-item">
+                                <Link href='/calendar' className="tp-header-action-btn cartmini-open-btn">
+                                  <i class="fa-regular fa-calendar"></i>
+                                </Link>
+                              </div>
+
+                              <div className="tp-header-action-item">
+                                <Link href='/profile' className="tp-header-action-btn cartmini-open-btn">
+                                  <i className='fa-regular fa-user-pen'></i>
+                                </Link>
+                              </div>
+                            </>
+                        ) : (
+                            <>
+                              <div className="tp-header-action-item">
+                                <Link href='/login' className="tp-header-action-btn cartmini-open-btn">
+                                  <i class="fa-solid fa-right-to-bracket"></i>
+                                </Link>
+                              </div>
+                            </>
+                        )}
+
+
                         <div className="tp-header-action-item tp-header-hamburger mr-20 d-xl-none">
                           <button
-                            onClick={() => setIsCanvasOpen(true)}
-                            type="button"
-                            className="tp-offcanvas-open-btn"
+                              onClick={() => setIsCanvasOpen(true)}
+                              type="button"
+                              className="tp-offcanvas-open-btn"
                           >
-                            <Menu />
+                            <Menu/>
                           </button>
                         </div>
                       </div>
@@ -145,14 +169,14 @@ const HeaderTwo = ({ style_2 = false }) => {
       </header>
 
       {/* cart mini sidebar start */}
-      <CartMiniSidebar />
+      <CartMiniSidebar/>
       {/* cart mini sidebar end */}
 
       {/* off canvas start */}
       <OffCanvas
-        isOffCanvasOpen={isOffCanvasOpen}
-        setIsCanvasOpen={setIsCanvasOpen}
-        categoryType="fashion"
+          isOffCanvasOpen={isOffCanvasOpen}
+          setIsCanvasOpen={setIsCanvasOpen}
+          categoryType="fashion"
       />
       {/* off canvas end */}
     </>
