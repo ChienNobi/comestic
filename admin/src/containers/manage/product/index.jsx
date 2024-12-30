@@ -10,6 +10,7 @@ import MasterTable from '@/components/MasterTable';
 import AppHeader from '@/components/AppHeader';
 import { getStatusProduct } from '@/commons/locale';
 import LogsDrawer from '@/components/LogsDrawer';
+import {addProductToSession, getSessionProducts} from "@/commons/sessionStorage.js";
 
 const localeFields = {
   id: 'Mã SP',
@@ -92,6 +93,7 @@ const Product = () => {
   const [loading, setLoading] = useState(false);
   const [showLog, setShowLog] = useState(false);
   const [logs, setLogs] = useState([]);
+  const [totalCart, setTotalCart] = useState(getSessionProducts()?.length);
 
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -190,6 +192,30 @@ const Product = () => {
       });
   };
 
+  function onAddProductToCart(record) {
+    if(record.status !== 'in-stock') {
+        messageApi.error('Sản phẩm đã hết hàng')
+        return
+    }
+
+    const product = {
+      _id: record._id,
+      name: record.name,
+      img: record.img,
+      price: record.price,
+      orderQuantity: 1,
+      description: record.description
+    }
+
+    const total = addProductToSession(product)
+    setTotalCart(total)
+  }
+
+  const updateCartSuccess = () => {
+    setTotalCart(getSessionProducts()?.length)
+    messageApi.success('Mua hộ đơn hàng thành công')
+  }
+
   return (
     <Layout>
       {contextHolder}
@@ -217,6 +243,10 @@ const Product = () => {
             onAdd={onAdd}
             onEdit={onEdit}
             onDelete={onDelete}
+            showCart={true}
+            addProductToCart={onAddProductToCart}
+            totalCart={totalCart}
+            updateCartSuccess={updateCartSuccess}
             scroll={{
               x: 1300,
             }}

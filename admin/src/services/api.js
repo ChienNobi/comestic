@@ -285,4 +285,8 @@ api.getAllCalendarBeauty = async () => {
   return api.get('/calendar-beauty');
 };
 
+api.createOrder = async data => {
+  return api.post('/orders/add', data);
+}
+
 export default api;

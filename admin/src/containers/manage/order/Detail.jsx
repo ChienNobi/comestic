@@ -76,7 +76,7 @@ const Detail = ({ data, onBack }) => {
         detail.cart && detail.cart.length > 0 ? (
           <>
             {detail.cart.map((info, index) => (
-              <Descriptions column={1} bordered size="small">
+              <Descriptions column={1} bordered size="small" key={index}>
                 <Descriptions.Item key={index} label={'Tên SP'}>
                   {info.name}
                 </Descriptions.Item>

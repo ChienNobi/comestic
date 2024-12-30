@@ -1,5 +1,5 @@
 import { useMemo, useRef } from 'react';
-import { Table, Button, Space, Input, Popconfirm, Select } from 'antd';
+import {Table, Button, Space, Input, Popconfirm, Select, Badge, Avatar} from 'antd';
 import {
   EditOutlined,
   DeleteOutlined,
@@ -7,10 +7,11 @@ import {
   SearchOutlined,
   FilterOutlined,
   HistoryOutlined,
-  FilePdfOutlined,
+  FilePdfOutlined, ShoppingCartOutlined,
 } from '@ant-design/icons';
 import styled from 'styled-components';
 import colors from '@/theme/color';
+import NiceModal from "@ebay/nice-modal-react";
 
 const Container = styled.div(props => ({
   padding: props.padding ? `4px ${props.padding} 0` : 24,
@@ -69,13 +70,23 @@ const MasterTable = ({
   filterComponents,
   showActions = true,
   showSearch = true,
-  showFilter = false,
+  showFilter = true,
   rowClassName,
   fixed = true,
   onExportPDF,
   showLog= true,
+  showCart = false,
+  totalCart = 0,
+  addProductToCart = () => {},
+  updateCartSuccess = () => {},
 }) => {
   const searchTimer = useRef();
+
+  function showCartModal() {
+    NiceModal.show('cart', {
+      onSuccess: updateCartSuccess
+    });
+  }
 
   const tableColumns = useMemo(() => {
     return [
@@ -116,6 +127,16 @@ const MasterTable = ({
                       onClick={() => onExportPDF(record)}
                     />
                   )}
+
+                  {
+                    showCart && (
+                        <Button
+                            icon={<PlusOutlined />}
+                            size="small"
+                            onClick={() => addProductToCart(record)}
+                        />
+                      )
+                  }
                 </Space>
               ),
             },
@@ -172,6 +193,15 @@ const MasterTable = ({
                 </>
             )}
             <Space>
+              {
+                showCart && (
+                    <div style={{marginRight: '12px', cursor: 'pointer'}} onClick={showCartModal}>
+                      <Badge count={totalCart}>
+                        <ShoppingCartOutlined style={{fontSize: '28px'}} />
+                      </Badge>
+                    </div>
+                  )
+              }
               {onAdd && (
                 <Button type="primary" icon={<PlusOutlined />} onClick={onAdd}>
                   Thêm mới
@@ -184,7 +214,6 @@ const MasterTable = ({
                     </Button>
                 )
               }
-
             </Space>
           </>
         )}

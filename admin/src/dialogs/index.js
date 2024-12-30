@@ -10,6 +10,7 @@ import AddBeautyTreatment from "@/dialogs/admin/AddBeautyTreatment.jsx";
 import AddBlog from "@/dialogs/admin/AddBlog.jsx";
 import AddCalendar from "@/dialogs/admin/AddCalendar.jsx";
 import AddCalendarBeauty from "@/dialogs/admin/AddCalendarBeauty.jsx";
+import Cart from "@/dialogs/manage/Cart.jsx";
 
 NiceModal.register('add-product', AddProduct);
 NiceModal.register('add-employee', AddEmployee);
@@ -21,3 +22,4 @@ NiceModal.register('add-beauty-treatment', AddBeautyTreatment);
 NiceModal.register('add-blog', AddBlog);
 NiceModal.register('add-calendar', AddCalendar);
 NiceModal.register('add-calendar-beauty', AddCalendarBeauty);
+NiceModal.register('cart', Cart);
