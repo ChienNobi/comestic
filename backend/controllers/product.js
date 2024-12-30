@@ -5,10 +5,10 @@ exports.getAllProducts = async ctx => {
   try {
     const query = {};
     if (ctx.query.keyword) {
-      query.searchIndex = { $regex: ctx.query.keyword, $options: 'i' };
+      query.name = { $regex: ctx.query.keyword, $options: 'i' };
     }
     const products = await Product.find(query)
-      .select('-_id -__v')
+      .select('-__v')
       .populate('brandData', '-_id id name')
       .populate('categoryData', '-_id id name')
       .populate('reviewData', '-__v -id')
@@ -22,7 +22,7 @@ exports.getAllProducts = async ctx => {
 exports.getProductById = async ctx => {
   try {
     const product = await Product.findOne({ id: ctx.params.id })
-      .select('-_id -__v')
+      .select('-__v')
       .populate('brandData', '-_id id name')
       .populate('categoryData', '-_id id name')
       .populate({
