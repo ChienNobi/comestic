@@ -13,8 +13,8 @@ const ShopTopRight = ({selectHandleFilter}) => {
         <NiceSelect
           options={[
             { value: "Default Sorting", text: "Mặc định" },
-            { value: "Low to High", text: "Cao đến thấp" },
-            { value: "High to Low", text: "Thấp đến cao" },
+            { value: "High to Low", text: "Cao đến thấp" },
+            { value: "Low to High", text: "Thấp đến cao" },
             { value: "New Added", text: "Thêm mới gần đây" },
             { value: "On Sale", text: "On Sale" },
           ]}

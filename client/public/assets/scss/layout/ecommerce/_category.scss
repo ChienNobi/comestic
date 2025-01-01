@@ -188,7 +188,7 @@
 .#{$theme-prifix}-category{
     $self3: &;
     &-item-3{
-        min-height: 520px;
+        height: 380px;
 
         &:hover{
             #{$self3}{

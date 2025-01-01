@@ -43,7 +43,7 @@ const BeautyCategory = () => {
         <div className="tp-category-item-3 p-relative black-bg text-center z-index-1 fix mb-30">
           <div
             className="tp-category-thumb-3 include-bg"
-            style={{ backgroundImage: `url(${item.img})` }}
+            style={{ backgroundImage: `url(${item.img})`, backgroundSize: 'contain'}}
           ></div>
           <div className="tp-category-content-3 transition-3">
             <h3 className="tp-category-title-3">

@@ -12,8 +12,8 @@ const BeautyTreatmentDetail = ({query}) => {
             <HeaderTwo style_2={true}/>
             <section className="tp-postbox-details-area pb-120 pt-95">
                 <div className="container">
-                    <h3>{data?.data.title}</h3>
-                    <img src={data?.data.img} alt="blog-big-img" style={{ maxWidth: '100%', marginBottom: '16px' }}/>
+                    {/* <h3>{data?.data.title}</h3>
+                    <img src={data?.data.img} alt="blog-big-img" style={{ maxWidth: '100%', marginBottom: '16px' }}/> */}
                     <div dangerouslySetInnerHTML={{__html: data?.data?.description}}/>
                 </div>
             </section>

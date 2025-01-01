@@ -103,7 +103,7 @@ const DetailsWrapper = ({
       <div className="tp-product-details-price-wrapper mb-20">
         {discount > 0 ? (
           <>
-            <span className="tp-product-details-price old-price">{formatMoney(price)}</span>
+            <span className="tp-product-details-price old-price" style={{ paddingRight: '12px'}}>{formatMoney(price)}</span>
             <span className="tp-product-details-price new-price">
               {formatMoney(
                 Number(price) -

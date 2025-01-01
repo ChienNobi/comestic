@@ -34,7 +34,7 @@
         position: relative;
         background-color:#F5F6F8;
         & img{
-            object-fit: cover;
+            object-fit: contain;
         }
     }
     &-thumb{

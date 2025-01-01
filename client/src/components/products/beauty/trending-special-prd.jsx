@@ -61,7 +61,7 @@ const TrendingSpecialPrd = () => {
   }
   return (
     <>
-      <section className="tp-special-area fix">
+      <section className="tp-special-area fix" style={{ marginBottom: '40px' }}>
         <div className="container">
           <div className="row gx-2">
             <div className="col-xl-5 col-md-6">
