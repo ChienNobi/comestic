@@ -181,12 +181,12 @@ exports.refreshToken = async ctx => {
   try {
     const { id } = jwt.verify(refreshToken, process.env.JWT_SECRET_KEY);
 
-    const employee = await Employee.findOne({ id }).select('-_id -__v').lean();
+    const employee = await Employee.findOne({ id }).select('-__v').lean();
     if (!employee) {
       ctx.throw(400, 'Invalid token');
     }
     const newToken = jwt.sign(
-      { id: employee.id, role: employee.role },
+      { id: employee.id, role: employee.role,  _id: employee._id },
       process.env.JWT_SECRET_KEY,
       { expiresIn: process.env.JWT_EXPIRE_TIME },
     );
