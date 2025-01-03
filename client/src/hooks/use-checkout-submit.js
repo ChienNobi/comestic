@@ -60,17 +60,6 @@ const useCheckoutSubmit = () => {
 
   let couponRef = useRef("");
 
-  // useEffect(() => {
-  //   if (localStorage.getItem("couponInfo")) {
-  //     const data = localStorage.getItem("couponInfo");
-  //     const coupon = JSON.parse(data);
-  //     setCouponInfo(coupon);
-  //     setDiscountPercentage(coupon.discountPercentage);
-  //     setMinimumAmount(coupon.minimumAmount);
-  //     setDiscountProductType(coupon.productType);
-  //   }
-  // }, []);
-
   useEffect(() => {
     if (minimumAmount - discountAmount > total || cart_products.length === 0) {
       setDiscountPercentage(0);

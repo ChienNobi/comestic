@@ -289,4 +289,8 @@ api.createOrder = async data => {
   return api.post('/orders/add', data);
 }
 
+api.getRegisterUser = async (id) => {
+  return api.get('/user/register-user/' + id);
+}
+
 export default api;

@@ -10,6 +10,7 @@ router.post('/', authMiddleware(), userController.createUser);
 router.put('/:id', authMiddleware(), userController.updateUser);
 router.put('/', authMiddleware(), userController.updateUser);
 router.delete('/:id', authMiddleware(), userController.deleteUser);
+router.get('/register-user/:id', authMiddleware(), userController.getUserRegisterBeautyTreatment);
 // change password
 router.patch('/change-password', authMiddleware(), userController.changePassword);
 

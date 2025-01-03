@@ -41,17 +41,6 @@ const AddCalendar = NiceModal.create(({ data, onSuccess, messageApi }) => {
         messageApi.error('Lỗi khi tải danh sách lịch');
     });
 
-    api.getUsers().then(response => {
-      response.data = response.data.map(item => ({
-        label: item.name,
-        value: item._id,
-      }));
-      setUsers(response.data);
-    }).catch(error => {
-      console.log('Get users error', error);
-      messageApi.error('Lỗi khi tải danh sách người dùng');
-    });
-
     api.getEmployees().then(response => {
       response.data = response.data.map(item => ({
         label: item.name,
@@ -63,6 +52,23 @@ const AddCalendar = NiceModal.create(({ data, onSuccess, messageApi }) => {
         messageApi.error('Lỗi khi tải danh sách nhân viên');
     });
   }, []);
+
+  const getUsers = () => {
+    setDisabled(true);
+    const beautyTreatmentId = form.getFieldValue('beauty_treatment_id');
+    api.getRegisterUser(beautyTreatmentId).then(response => {
+      response.data = response.data.map(item => ({
+        label: item.user_id.name,
+        value: item.user_id._id,
+      }));
+      setUsers(response.data);
+    }).catch(error => {
+      console.log('Get users error', error);
+      messageApi.error('Lỗi khi tải danh sách người dùng');
+    }).finally(() => {
+      setDisabled(false);
+    });
+  }
 
 
   useEffect(() => {
@@ -138,21 +144,21 @@ const AddCalendar = NiceModal.create(({ data, onSuccess, messageApi }) => {
         </Form.Item>
 
         <Form.Item
-            name="user_id"
-            label="Khách hàng"
-            rules={[{ required: true, message: "Vui lòng chọn khách hàng" }]}
-            initialValue={data?.user_id}
-        >
-          <Select placeholder="Chọn khách hàng" options={users}/>
-        </Form.Item>
-
-        <Form.Item
             name="beauty_treatment_id"
             label="Chọn liệu trình"
             rules={[{ required: true, message: 'Vui lòng chọn liệu trình' }]}
             initialValue={data?.beauty_treatment_id}
         >
-          <Select allowClear placeholder="Chọn liệu trình" options={beautyTreatments} />
+          <Select allowClear placeholder="Chọn liệu trình" options={beautyTreatments} onChange={getUsers}/>
+        </Form.Item>
+
+        <Form.Item
+            name="user_id"
+            label="Khách hàng"
+            rules={[{ required: true, message: "Vui lòng chọn khách hàng" }]}
+            initialValue={data?.user_id}
+        >
+          <Select placeholder="Chọn khách hàng" options={users} disabled={disabled}/>
         </Form.Item>
 
         <Form.Item

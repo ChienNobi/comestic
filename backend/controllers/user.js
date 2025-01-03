@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs');
 const User = require('../models/user');
+const CalendarBeauty = require('../models/calendar_beauty');
 const { validateLogin, validateUser } = require('../utils/validate');
 const { generateToken, generateRefreshToken } = require('../utils/token');
 const {USER_STATUSES} = require("../commons/constants");
@@ -10,12 +11,23 @@ exports.getAllUsers = async ctx => {
     if (ctx.query.keyword) {
       query.searchIndex = { $regex: ctx.query.keyword, $option: 'i' };
     }
-    const users = await User.find(query).select('-__v').lean();
-    ctx.body = users;
+    ctx.body = await User.find(query).select('-__v').lean();
   } catch (error) {
     ctx.throw(500, error);
   }
 };
+
+exports.getUserRegisterBeautyTreatment = async ctx => {
+  try {
+    const beautyTreatmentId = ctx.params.id;
+    ctx.body =
+        await CalendarBeauty
+            .find({beauty_treatment_id: beautyTreatmentId})
+            .populate('user_id');
+  } catch (error) {
+    ctx.throw(500, error);
+  }
+}
 
 exports.getUserById = async ctx => {
   try {
