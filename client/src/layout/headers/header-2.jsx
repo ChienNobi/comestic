@@ -120,7 +120,7 @@ const HeaderTwo = ({ style_2 = false }) => {
                             <>
                               <div className="tp-header-action-item">
                                 <Link href='/calendar' className="tp-header-action-btn cartmini-open-btn">
-                                  <i class="fa-regular fa-calendar"></i>
+                                  <i className="fa-regular fa-calendar"></i>
                                 </Link>
                               </div>
 
@@ -134,7 +134,7 @@ const HeaderTwo = ({ style_2 = false }) => {
                             <>
                               <div className="tp-header-action-item">
                                 <Link href='/login' className="tp-header-action-btn cartmini-open-btn">
-                                  <i class="fa-solid fa-right-to-bracket"></i>
+                                  <i className="fa-solid fa-right-to-bracket"></i>
                                 </Link>
                               </div>
                             </>

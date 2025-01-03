@@ -20,11 +20,13 @@ import {SHIPPING_FEE_NORMAL} from "@/commons/constants";
 const useCheckoutSubmit = () => {
   // offerCoupons
   const {
-    couponData: offerCoupons,
+    data,
     isError,
     isLoading,
   } = useGetOfferCouponsQuery();
-  const data = offerCoupons?.data;
+
+  const offerCoupons = data?.data || []
+
   const [saveOrder, {}] = useSaveOrderMutation();
   const [createPaymentIntent, {}] = useCreatePaymentIntentMutation();
   const { cart_products } = useSelector((state) => state.cart);
@@ -58,16 +60,16 @@ const useCheckoutSubmit = () => {
 
   let couponRef = useRef("");
 
-  useEffect(() => {
-    if (localStorage.getItem("couponInfo")) {
-      const data = localStorage.getItem("couponInfo");
-      const coupon = JSON.parse(data);
-      setCouponInfo(coupon);
-      setDiscountPercentage(coupon.discountPercentage);
-      setMinimumAmount(coupon.minimumAmount);
-      setDiscountProductType(coupon.productType);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (localStorage.getItem("couponInfo")) {
+  //     const data = localStorage.getItem("couponInfo");
+  //     const coupon = JSON.parse(data);
+  //     setCouponInfo(coupon);
+  //     setDiscountPercentage(coupon.discountPercentage);
+  //     setMinimumAmount(coupon.minimumAmount);
+  //     setDiscountProductType(coupon.productType);
+  //   }
+  // }, []);
 
   useEffect(() => {
     if (minimumAmount - discountAmount > total || cart_products.length === 0) {
@@ -133,6 +135,7 @@ const useCheckoutSubmit = () => {
     if (isError) {
       return notifyError("Something went wrong");
     }
+
     const result = offerCoupons?.filter(
       (coupon) => coupon.couponCode === couponRef.current?.value
     );
@@ -153,11 +156,8 @@ const useCheckoutSubmit = () => {
       );
       return;
     } else {
-      // notifySuccess(
-      //   `Your Coupon ${result[0].title} is Applied on ${result[0].productType}!`
-      // );
       setCouponApplyMsg(
-        `Your Coupon ${result[0].title} is Applied on ${result[0].productType} productType!`
+        `Đã áp dụng mã giảm giá ${result[0].title} thành công!`
       );
       setMinimumAmount(result[0]?.minimumAmount);
       setDiscountProductType(result[0].productType);

@@ -22,7 +22,7 @@ const Header = () => {
   const { sticky } = useSticky();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state?.auth);
-  
+
   return (
     <>
       <header>
@@ -90,7 +90,7 @@ const Header = () => {
                         <>
                           <div className="tp-header-action-item">
                             <Link href='/calendar' className="tp-header-action-btn cartmini-open-btn">
-                              <i class="fa-regular fa-calendar"></i>
+                              <i className="fa-regular fa-calendar"></i>
                             </Link>
                           </div>
 
@@ -104,7 +104,7 @@ const Header = () => {
                           <>
                             <div className="tp-header-action-item">
                               <Link href='/login' className="tp-header-action-btn cartmini-open-btn">
-                                <i class="fa-solid fa-right-to-bracket"></i>
+                                <i className="fa-solid fa-right-to-bracket"></i>
                               </Link>
                             </div>
                           </>

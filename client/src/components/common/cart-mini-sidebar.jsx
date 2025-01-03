@@ -72,15 +72,12 @@ const CartMiniSidebar = () => {
                       <div className="cartmini__price-wrapper">
                         {item.discount > 0 ? (
                           <span className="cartmini__price">
-                            $
-                            {(
-                              Number(item.price) -
-                              (Number(item.price) * Number(item.discount)) / 100
-                            ).toFixed(2)}
+                            {formatMoney(Number(item.price) -
+                                (Number(item.price) * Number(item.discount)) / 100)}
                           </span>
                         ) : (
                           <span className="cartmini__price">
-                            ${item.price.toFixed(2)}
+                            {formatMoney(item.price)}
                           </span>
                         )}
                         <span className="cartmini__quantity">
