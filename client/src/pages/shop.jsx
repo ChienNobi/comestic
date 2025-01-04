@@ -112,16 +112,6 @@ const ShopPage = ({ query }) => {
             .join("-") === query.category
       );
     }
-
-    // category filter
-    // if (query.subCategory) {
-    //   product_items = product_items.filter(
-    //     (p) =>
-    //       p.childr.toLowerCase().replace("&", "").split(" ").join("-") ===
-    //       query.subCategory
-    //   );
-    // }
-
     // color filter
     if (query.color) {
       product_items = product_items.filter((product) => {

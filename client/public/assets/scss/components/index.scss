@@ -15,4 +15,20 @@
 @forward 'section-title';
 @forward 'search';
 @forward 'hotspot';
-// @forward 'rangeSlider';
+
+.extension {
+  position: fixed;
+  z-index: 99;
+  left: 20px;
+  bottom: 60px;
+
+  &-icon {
+    margin-bottom: .75em;
+    cursor: pointer;
+
+    svg {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}
