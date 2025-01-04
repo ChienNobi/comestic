@@ -35,7 +35,7 @@ const HeaderTwo = ({ style_2 = false }) => {
             style_2 ? "primary" : "darkRed"
           } tp-header-height`}
         >
-          <div className="tp-header-top-2 p-relative z-index-11 tp-header-top-border d-none d-md-block">
+          {/* <div className="tp-header-top-2 p-relative z-index-11 tp-header-top-border d-none d-md-block">
             <div className="container">
               <div className="row align-items-center">
                 <div className="col-md-6">
@@ -52,7 +52,7 @@ const HeaderTwo = ({ style_2 = false }) => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
           <div
             id="header-sticky"
@@ -85,7 +85,7 @@ const HeaderTwo = ({ style_2 = false }) => {
                             onChange={(e) => setSearchText(e.target.value)}
                             value={searchText}
                             type="text"
-                            placeholder="Search for Products..."
+                            placeholder="Tìm kiếm sản phẩm..."
                           />
                           <button type="submit">
                             <Search />

@@ -74,9 +74,9 @@ const ProductAreaTwo = () => {
           <div className="col-xl-6 col-lg-6">
             <div className="tp-section-title-wrapper-3 mb-45 text-center text-lg-start">
               <span className="tp-section-title-pre-3">
-                Best Seller This Week’s
+                Bán chạy nhất trong tuần
               </span>
-              <h3 className="tp-section-title-3">Enjoy the best quality</h3>
+              <h3 className="tp-section-title-3">Sản phẩm bán chạy</h3>
             </div>
           </div>
           <div className="col-xl-6 col-lg-6">

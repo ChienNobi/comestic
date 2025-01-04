@@ -79,9 +79,9 @@ const BeautyCategory = () => {
             <div className="col-lg-6 col-md-8">
               <div className="tp-section-title-wrapper-3 mb-45">
                 <span className="tp-section-title-pre-3">
-                  Product Collection
+                  Sản phẩm theo danh mục
                 </span>
-                <h3 className="tp-section-title-3">Khám phá những sản phẩm của chúng tôi</h3>
+                <h3 className="tp-section-title-3">Danh mục sản phẩm</h3>
               </div>
             </div>
             <div className="col-lg-6 col-md-4">

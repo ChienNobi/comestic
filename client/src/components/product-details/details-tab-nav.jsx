@@ -53,10 +53,10 @@ const DetailsTabNav = ({ product }) => {
               active={true}
               linkRef={activeRef}
               id="desc"
-              title="Description"
+              title="Mô tả"
             />
-            <NavItem id="additional" title="Additional information" />
-            <NavItem id="review" title={`Reviews (${reviewData.length})`} />
+            <NavItem id="additional" title="Thông tin bổ sung" />
+            <NavItem id="review" title={`Đánh giá (${reviewData.length})`} />
 
             <span
               ref={marker}

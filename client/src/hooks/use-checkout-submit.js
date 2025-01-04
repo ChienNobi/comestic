@@ -129,6 +129,7 @@ const useCheckoutSubmit = () => {
       (coupon) => coupon.couponCode === couponRef.current?.value
     );
 
+    
     if (!result?.length) {
       notifyError("Mã giảm giá không hợp lệ");
       return;

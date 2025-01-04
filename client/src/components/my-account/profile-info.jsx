@@ -80,7 +80,7 @@ const ProfileInfo = () => {
 
   return (
     <div className="profile__info">
-      <h3 className="profile__info-title">Personal Details</h3>
+      <h3 className="profile__info-title">Thông tin cá nhân</h3>
       <div className="profile__info-content">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="row">
@@ -167,7 +167,7 @@ const ProfileInfo = () => {
             <div className="col-xxl-12">
               <div className="profile__btn">
                 <button type="submit" className="tp-btn" disabled={isLoading}>
-                  {isLoading ? "Updating..." : "Update Profile"}
+                  {isLoading ? "Updating..." : "Cập nhật thông tin"}
                 </button>
               </div>
             </div>

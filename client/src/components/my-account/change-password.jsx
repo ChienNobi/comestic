@@ -73,7 +73,7 @@ const ChangePassword = () => {
                   />
                 </div>
                 <div className="tp-profile-input-title">
-                  <label htmlFor="password">Old Password</label>
+                  <label htmlFor="password">Mật khẩu cũ</label>
                 </div>
                 <ErrorMsg msg={errors.password?.message} />
               </div>
@@ -92,7 +92,7 @@ const ChangePassword = () => {
                 />
               </div>
               <div className="tp-profile-input-title">
-                <label htmlFor="new_pass">New Password</label>
+                <label htmlFor="new_pass">Mật khẩu mới</label>
               </div>
               <ErrorMsg msg={errors.newPassword?.message} />
             </div>
@@ -108,7 +108,7 @@ const ChangePassword = () => {
                 />
               </div>
               <div className="tp-profile-input-title">
-                <label htmlFor="confirmPassword">Confirm Password</label>
+                <label htmlFor="confirmPassword">Xác nhận mật khẩu</label>
               </div>
               <ErrorMsg msg={errors.confirmPassword?.message} />
             </div>
@@ -116,7 +116,7 @@ const ChangePassword = () => {
           <div className="col-xxl-6 col-md-6">
             <div className="profile__btn">
               <button type="submit" className="tp-btn">
-                Update
+                Cập nhật
               </button>
             </div>
           </div>

@@ -31,12 +31,12 @@ const ProfileNavTab = () => {
         <SingleNav
           active={true}
           id="profile"
-          title="Profile"
+          title="Hồ sơ "
           icon="fa-regular fa-user-pen"
         />
         <SingleNav
           id="information"
-          title="Information"
+          title="Thông tin cá nhân"
           icon="fa-regular fa-circle-info"
         />
         <SingleNav

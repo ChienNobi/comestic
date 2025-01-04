@@ -35,8 +35,8 @@ const ContactArea = () => {
                     </div>
                     <div className="tp-contact-info-content">
                       <p data-info="mail">
-                        <a href="mailto:contact@thstore.com">
-                          contact@thstore.com
+                        <a href="mailto:contact@chbeauty.com">
+                          contact@chbeauty.com
                         </a>
                       </p>
                       <p data-info="phone">
@@ -53,11 +53,11 @@ const ContactArea = () => {
                     <div className="tp-contact-info-content">
                       <p>
                         <a
-                          href="https://maps.app.goo.gl/xx3nPdK5ZdS9WfoAA"
+                          href="https://www.google.com/maps/place/344+P.+B%C3%A0+Tri%E1%BB%87u,+L%C3%AA+%C4%90%E1%BA%A1i+H%C3%A0nh,+Hai+B%C3%A0+Tr%C6%B0ng,+H%C3%A0+N%E1%BB%99i/"
                           target="_blank"
                         >
-                          145 Đ. Nguyễn Văn Bá, Phước Long B, Thủ Đức, <br /> Hồ
-                          Chí Minh, Việt Nam
+                          334 Phố Bà Triệu, Lê Đại Hành, Hai Bà Trưng,
+                          <br /> Hà Nội, Việt Nam
                         </a>
                       </p>
                     </div>

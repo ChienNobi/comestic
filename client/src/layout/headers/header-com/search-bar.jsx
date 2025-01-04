@@ -34,7 +34,7 @@ const SearchBar = ({ isSearchOpen, setIsSearchOpen }) => {
                       onChange={(e) => setSearchText(e.target.value)}
                       value={searchText}
                       type="text"
-                      placeholder="Search for product..."
+                      placeholder="Tìm kiếm sản phẩm..."
                     />
                     <button type="submit">
                       <i className="flaticon-search-1"></i>

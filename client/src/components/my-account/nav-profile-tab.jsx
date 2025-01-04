@@ -22,7 +22,7 @@ const NavProfileTab = ({ orderData }) => {
             <div className="profile__main-inner d-flex flex-wrap align-items-center">
               <div className="profile__main-content">
                 <h4 className="profile__main-title">
-                  Welcome Mr. {user?.name}
+                  Chào mừng {user?.name}
                 </h4>
               </div>
             </div>
@@ -33,7 +33,7 @@ const NavProfileTab = ({ orderData }) => {
                 onClick={handleLogout}
                 className="cursor-pointer tp-logout-btn"
               >
-                Logout
+                Đăng xuất 
               </a>
             </div>
           </div>

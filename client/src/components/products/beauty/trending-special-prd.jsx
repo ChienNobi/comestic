@@ -97,9 +97,9 @@ const TrendingSpecialPrd = () => {
               <div className="tp-special-wrapper grey-bg-9 pt-85 pb-35">
                 <div className="tp-section-title-wrapper-3 mb-40 text-center">
                   <span className="tp-section-title-pre-3">
-                    Trending This Week’s
+                    Xu hướng tuần này
                   </span>
-                  <h3 className="tp-section-title-3">Special products</h3>
+                  <h3 className="tp-section-title-3">Sản phẩm đặc biệt</h3>
                 </div>
                 <div className="tp-special-slider ">
                   <div className="row gx-0 justify-content-center">

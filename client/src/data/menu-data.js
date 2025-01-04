@@ -20,13 +20,13 @@ const menu_data = [
   {
     id: 4,
     single_link: true,
-    title: 'Coupons',
+    title: 'Khuyễn mãi',
     link: '/coupon',
   },
   {
     id: 5,
     sub_menu: false,
-    title: 'Blog',
+    title: 'Tin tức',
     link: '/blog'
   },
   {

@@ -2,7 +2,7 @@
 
 
 ![TH-Store Image Banner](https://res.cloudinary.com/dfmwnhbap/image/upload/v1727857701/olu6tel5ztfty5qapien.png)
-)
+
 
 Beauty & Cosmetics is a powerful and modern full stack eCommerce web application built using Next.js, Koa, MongoDB with Mongoose, Redux Toolkit, RTK Query, Stripe payment method, Bootstrap 5, and Sass. It includes a feature-rich admin panel for easy management and control of your online store.
 

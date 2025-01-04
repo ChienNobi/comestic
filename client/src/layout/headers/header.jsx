@@ -36,7 +36,7 @@ const Header = () => {
             <div className="container-fluid">
               <div className="row align-items-center">
                 <div className="col-xl-2 col-lg-2 col-6">
-                  <div className="logo">
+                  <div className="logo" style={{ width: '200px' }}>
                     <Link href="/">
                       <Image
                         className="logo-light"

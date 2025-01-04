@@ -86,16 +86,16 @@ const BeautyBanner = () => {
                 <div className="row align-items-center">
                   <div className="col-xl-6 col-lg-6 col-md-8">
                     <div className="tp-slider-content-3">
-                      <span>Winter Collection 2024</span>
+                      <span>Bộ sưu tập mùa xuân 2025</span>
                       <h3 className="tp-slider-title-3">
-                        Be your kind of beauty
+                        Vì vẻ đẹp của riêng bạn
                       </h3>
                       <div className="tp-slider-feature-3 d-flex flex-wrap align-items-center p-relative z-index-1 mb-15">
                         <FeatureItem
                           icon={<Cosmetics />}
                           title={
                             <>
-                              High-end <br /> Cosmetics
+                              Mỹ phẩm <br /> Cao cấp
                             </>
                           }
                         />
@@ -103,7 +103,7 @@ const BeautyBanner = () => {
                           icon={<VeganProduct />}
                           title={
                             <>
-                              Vegan <br /> Product
+                              Dịch vụ <br /> Chuyên sâu
                             </>
                           }
                         />
@@ -111,7 +111,7 @@ const BeautyBanner = () => {
                           icon={<Meckoup />}
                           title={
                             <>
-                              Express <br /> Make-up
+                              Làm đẹp <br /> Nhanh chóng
                             </>
                           }
                         />
@@ -121,7 +121,7 @@ const BeautyBanner = () => {
                           href="/shop"
                           className="tp-btn tp-btn-border tp-btn-border-white"
                         >
-                          Discover Now
+                          Khám phá ngay
                         </Link>
                       </div>
                     </div>
