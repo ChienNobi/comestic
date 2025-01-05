@@ -6,6 +6,7 @@ import Link from "next/link";
 import ErrorMsg from "@/components/common/error-msg";
 import { useGetTopRatedProductsQuery } from "@/redux/features/productApi";
 import ShopTopRatedLoader from "@/components/loader/shop/top-rated-prd-loader";
+import { formatMoney } from "@/utils/formatter";
 
 const TopRatedProducts = () => {
   const { data: products, isError, isLoading } = useGetTopRatedProductsQuery();
@@ -50,7 +51,7 @@ const TopRatedProducts = () => {
           </h4>
           <div className="tp-shop-widget-product-price-wrapper">
             <span className="tp-shop-widget-product-price">
-              ${item.price.toFixed(2)}
+              {formatMoney(item.price)}
             </span>
           </div>
         </div>

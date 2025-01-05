@@ -9,9 +9,9 @@ import CommonBreadcrumb from '@/components/breadcrumb/common-breadcrumb';
 const WishlistPage = () => {
   return (
     <Wrapper>
-      <SEO pageTitle="Wishlist" />
+      <SEO pageTitle="Danh sách yêu thích" />
       <HeaderTwo style_2={true} />
-      <CommonBreadcrumb title="Wishlist" subtitle="Wishlist" />
+      <CommonBreadcrumb title="Danh sách yêu thích" subtitle="Danh sách yêu thích" />
       <WishlistArea/>
       <Footer primary_style={true} />
     </Wrapper>

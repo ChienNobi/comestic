@@ -39,11 +39,14 @@ const Header = () => {
                   <div className="logo" style={{ width: '200px' }}>
                     <Link href="/">
                       <Image
+                        width="200"
+                        height="35"
                         className="logo-light"
                         src={logo_white}
                         alt="logo"
                       />
-                      <Image className="logo-dark" src={logo_dark} alt="logo" />
+                      <Image className="logo-dark" src={logo_dark} alt="logo"  width="200"
+                        height="35"/>
                     </Link>
                   </div>
                 </div>

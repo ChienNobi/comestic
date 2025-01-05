@@ -9,9 +9,9 @@ import List from "@/components/blog/list";
 const BlogListPage = () => {
   return (
     <Wrapper>
-      <SEO pageTitle="Blog" />
+      <SEO pageTitle="Tin tức" />
       <HeaderTwo style_2={true} />
-      <SectionTitle text="Blog"/>
+      <SectionTitle text="Tin tức"/>
       <List list_area={true} />
       <Footer primary_style={true} />
     </Wrapper>

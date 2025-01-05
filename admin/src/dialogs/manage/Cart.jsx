@@ -30,6 +30,7 @@ const Cart = NiceModal.create(({ data, onSuccess, messageApi }) => {
 
   const [totalPrice, setTotalPrice] = useState(calculateTotalPrice(products));
   const [discount, setDiscount] = useState(0);
+  const [isValid, setIsValid] = useState('')
 
   useEffect(() => {
     setTotalPrice(calculateTotalPrice(products));
@@ -63,6 +64,17 @@ const Cart = NiceModal.create(({ data, onSuccess, messageApi }) => {
     setTotalPrice(calculateTotalPrice(products) - discountValue);
   };
 
+  const handlePromotionCode = (e) => {
+    const val = e.target.value
+    if(val > 30) {
+      setDiscount(0)
+      setIsValid('error')
+      return
+    }
+    setIsValid('')
+    setDiscount(val/100)
+  }
+
   const onFinish = values => {
     const orderDetails = {
       ...values,
@@ -73,7 +85,7 @@ const Cart = NiceModal.create(({ data, onSuccess, messageApi }) => {
       paymentMethod: 'COD',
       subTotal: totalPrice,
       shippingCost,
-      discount,
+      discount: totalPrice * discount,
       totalAmount: totalPrice + shippingCost - discount,
     };
 
@@ -131,8 +143,12 @@ const Cart = NiceModal.create(({ data, onSuccess, messageApi }) => {
                 <Button onClick={() => removeProduct(product._id)} icon={<DeleteOutlined/>}/>
               </ItemList>
           ))}
-          <div style={{textAlign: "right"}}>Phí vận chuyển: <b>{formatPrice(shippingCost)}</b></div>
-          <div style={{textAlign: "right"}}>Tổng tiền: <b>{formatPrice(totalPrice + shippingCost)}</b></div>
+          <div style={{textAlign: "right", display: 'flex'}}>
+            <div style={{ flexShrink: 0}}>Giảm giá:</div> 
+            <Input onChange={handlePromotionCode} status={isValid}></Input>
+          </div>
+          <div style={{textAlign: "right"  }}>Phí vận chuyển: <b>{formatPrice(shippingCost)}</b></div>
+          <div style={{textAlign: "right"}}>Tổng tiền: <b>{formatPrice(totalPrice + shippingCost - totalPrice * discount)}</b></div>
         </div>
 
         <h3>Thông tin đặt hàng</h3>

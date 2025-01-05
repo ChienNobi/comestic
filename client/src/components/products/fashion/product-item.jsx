@@ -108,16 +108,6 @@ const ProductItem = ({ product, style_2 = false }) => {
                 Add To Wishlist
               </span>
             </button>
-            <button
-              disabled={status === "out-of-stock"}
-              onClick={() => handleCompareProduct(product)}
-              className="tp-product-action-btn-2 tp-product-add-to-compare-btn"
-            >
-              <CompareThree />
-              <span className="tp-product-tooltip tp-product-tooltip-right">
-                Add To Compare
-              </span>
-            </button>
           </div>
         </div>
       </div>

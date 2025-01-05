@@ -79,16 +79,6 @@ const ShopListItem = ({ product }) => {
                 Add To Wishlist
               </span>
             </button>
-            <button
-              type="button"
-              onClick={() => handleCompareProduct(product)}
-              className="tp-product-action-btn-2 tp-product-add-to-compare-btn"
-            >
-              <CompareThree />
-              <span className="tp-product-tooltip tp-product-tooltip-right">
-                Add To Compare
-              </span>
-            </button>
           </div>
         </div>
       </div>

@@ -25,7 +25,7 @@ exports.getAllOrders = async ctx => {
   try {
     const query = {};
     if (ctx.query.keyword) {
-      query.searchIndex = { $regex: ctx.query.keyword, $options: 'i' };
+      query.name = { $regex: ctx.query.keyword, $options: 'i' };
     }
     const orders = await Order.find(query)
       .select('-__v')

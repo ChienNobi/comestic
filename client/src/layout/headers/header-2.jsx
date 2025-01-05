@@ -11,9 +11,7 @@ import { openCartMini } from "@/redux/features/cartSlice";
 import CartMiniSidebar from "@/components/common/cart-mini-sidebar";
 import {
   CartTwo,
-  Compare,
   Menu,
-  PhoneTwo,
   Wishlist,
   Search,
 } from "@/svg";
@@ -63,10 +61,10 @@ const HeaderTwo = ({ style_2 = false }) => {
             <div className="container">
               <div className="tp-mega-menu-wrapper p-relative">
                 <div className="row align-items-center">
-                  <div className="col-xl-2 col-lg-5 col-md-5 col-sm-4 col-6">
-                    <div className="logo">
+                  <div className="col-xl-3 col-lg-5 col-md-5 col-sm-4 col-6">
+                    <div className="logo" style={{ width: '200px'}}>
                       <Link href="/">
-                        <Image src={logo} alt="logo" priority />
+                        <Image src={logo} alt="logo" priority width={200} height={35}/>
                       </Link>
                     </div>
                   </div>
@@ -77,7 +75,7 @@ const HeaderTwo = ({ style_2 = false }) => {
                       </nav>
                     </div>
                   </div>
-                  <div className="col-xl-5 col-lg-7 col-md-7 col-sm-8 col-6">
+                  <div className="col-xl-4 col-lg-7 col-md-7 col-sm-8 col-6">
                     <div className="tp-header-bottom-right d-flex align-items-center justify-content-end pl-30">
                       <div className="tp-header-search-2 d-none d-sm-block">
                         <form onSubmit={handleSubmit}>

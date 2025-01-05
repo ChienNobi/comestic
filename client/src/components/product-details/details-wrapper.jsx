@@ -180,15 +180,6 @@ const DetailsWrapper = ({
       <div className="tp-product-details-action-sm">
         <button
           disabled={status === "out-of-stock"}
-          onClick={() => handleCompareProduct(productItem)}
-          type="button"
-          className="tp-product-details-action-sm-btn"
-        >
-          <CompareTwo />
-          So sánh
-        </button>
-        <button
-          disabled={status === "out-of-stock"}
           onClick={() => handleWishlistProduct(productItem)}
           type="button"
           className="tp-product-details-action-sm-btn"

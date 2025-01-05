@@ -187,7 +187,6 @@ const MasterTable = ({
                             allowClear
                         />
                     )}
-                    <FilterButton icon={<FilterOutlined />}>Bộ lọc</FilterButton>
                   </Space>
 
                 </>

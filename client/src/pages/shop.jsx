@@ -157,9 +157,9 @@ const ShopPage = ({ query }) => {
   }
   return (
     <Wrapper>
-      <SEO pageTitle="Shop" />
+      <SEO pageTitle="Sản phẩm" />
       <HeaderTwo style_2={true} />
-      <ShopBreadcrumb title="Shop" subtitle="Shop" />
+      <ShopBreadcrumb title="Sản phẩm" subtitle="Sản phẩm" />
       {content}
       <Footer primary_style={true} />
     </Wrapper>

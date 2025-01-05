@@ -137,7 +137,6 @@ const ModalTable = ({
               spellCheck={false}
               autoComplete="nope"
             />
-            <FilterButton icon={<FilterOutlined />}>Bộ lọc</FilterButton>
           </Space>
         </Filter>
       )}

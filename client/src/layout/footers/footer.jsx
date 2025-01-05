@@ -36,7 +36,7 @@ const Footer = ({
                   <div className="tp-footer-widget-content">
                     <div className="tp-footer-logo">
                       <Link href="/">
-                        <Image src={logo} alt="logo" />
+                        <Image src={logo} alt="logo" width="200" height="35"/>
                       </Link>
                     </div>
                     <div className="tp-footer-social">
