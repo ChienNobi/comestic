@@ -87,6 +87,7 @@ const AddCalendar = NiceModal.create(({ data, onSuccess, messageApi }) => {
         ...data,
       });
       setIsEditMode(true);
+      getUsers()
     } else {
       if(currentUser?.role !== 'admin') {
         setDisabled(true)
