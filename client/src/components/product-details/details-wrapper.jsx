@@ -19,6 +19,7 @@ const DetailsWrapper = ({
   activeImg,
   detailsBottom = false,
 }) => {
+  const OUT_OF_STOCK = 'out-of-stock';
   const {
     id,
     img,
@@ -35,7 +36,14 @@ const DetailsWrapper = ({
   } = productItem || {};
   const [ratingVal, setRatingVal] = useState(0);
   const [textMore, setTextMore] = useState(false);
+  const [isValid, setIsValid] = useState(true);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if(productItem.quantity === 0 || status === OUT_OF_STOCK) {
+      setIsValid(false);
+    }
+  }, [productItem]);
 
   useEffect(() => {
     if (reviewData && reviewData.length > 0) {
@@ -50,17 +58,13 @@ const DetailsWrapper = ({
 
   // handle add product
   const handleAddProduct = (prd) => {
+    if(prd.quantity === 0 || prd.status === OUT_OF_STOCK) return;
     dispatch(add_cart_product(prd));
   };
 
   // handle wishlist product
   const handleWishlistProduct = (prd) => {
     dispatch(add_to_wishlist(prd));
-  };
-
-  // handle compare product
-  const handleCompareProduct = (prd) => {
-    dispatch(add_to_compare(prd));
   };
 
   return (
@@ -159,7 +163,7 @@ const DetailsWrapper = ({
       <div className="tp-product-details-action-wrapper">
         <h3 className="tp-product-details-action-title">Số lượng</h3>
         <div className="tp-product-details-action-item-wrapper d-sm-flex align-items-center">
-          <ProductQuantity />
+          <ProductQuantity max={productItem.quantity}/>
           <div className="tp-product-details-add-to-cart mb-15 w-100">
             <button
               onClick={() => handleAddProduct(productItem)}
@@ -170,11 +174,13 @@ const DetailsWrapper = ({
             </button>
           </div>
         </div>
-        <Link href="/cart" onClick={() => handleAddProduct(productItem)}>
-          <button className="tp-product-details-buy-now-btn w-100">
-            Mua ngay
-          </button>
-        </Link>
+        { isValid && (
+            <Link href="/cart" onClick={() => handleAddProduct(productItem)}>
+              <button className="tp-product-details-buy-now-btn w-100">
+                Mua ngay
+              </button>
+            </Link>
+        )}
       </div>
       {/* product-details-action-sm start */}
       <div className="tp-product-details-action-sm">

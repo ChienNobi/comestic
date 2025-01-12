@@ -4,12 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Minus, Plus } from '@/svg';
 import { decrement, increment } from '@/redux/features/cartSlice';
 
-const ProductQuantity = () => {
+const ProductQuantity = ({max}) => {
   const { orderQuantity } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  // handleIncrease
+
   const handleIncrease = () => {
-    dispatch(increment());
+    if(orderQuantity < max){
+      dispatch(increment());
+    }
   };
   // handleDecrease
   const handleDecrease = () => {

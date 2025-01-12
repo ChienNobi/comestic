@@ -1,4 +1,7 @@
 const Order = require('../models/order');
+const {startSession} = require("mongoose");
+const Products = require("../models/product");
+const {PRODUCT_STATUSES} = require("../commons/constants");
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 exports.paymentIntent = async ctx => {
@@ -111,15 +114,45 @@ exports.getOrder = async ctx => {
 };
 
 exports.createOrder = async ctx => {
+  const session = await startSession();
+  session.startTransaction();
   try {
-    const orderItems = await Order.create(ctx.request.body);
+    const cart = ctx.request.body.cart;
+    for (const item of cart) {
+      const product = await Products.findById(item._id).session(session);
+      if (!product) {
+        console.log(`Product with ID ${item._id} not found`);
+        throw new Error('Product not found');
+      }
+      if (product.quantity < item.orderQuantity) {
+        console.log(`Insufficient quantity for product ${product._id}`);
+        throw new Error('Insufficient quantity');
+      }
+      product.quantity -= item.orderQuantity;
+      product.sellCount += item.orderQuantity;
+
+      if(product.quantity === 0) {
+        product.status = PRODUCT_STATUSES.OUT_OF_STOCK;
+      }
+      await product.save({ session });
+    }
+
+    const order = new Order(ctx.request.body);
+    await order.save({ session });
+
+    await session.commitTransaction();
+    session.endSession();
 
     ctx.body = {
       success: true,
       message: 'Order added successfully',
-      order: orderItems,
+      order: order,
     };
   } catch (err) {
+    if (session.inTransaction()) {
+      await session.abortTransaction();
+    }
+    session.endSession();
     ctx.throw(500, err);
   }
 };

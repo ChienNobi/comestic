@@ -50,8 +50,10 @@ exports.getProductByType = async ctx => {
     const type = ctx.params.type;
     const query = ctx.query;
     let products = [];
+    const baseQuery = { productType: type, quantity: { $gt: 0 } };
+
     if (query.new === 'true') {
-      products = await Product.find({ productType: type })
+      products = await Product.find(baseQuery)
         .sort({ createdAt: -1 })
         .limit(8)
         .populate('reviewData', '-__v -id')
@@ -60,7 +62,7 @@ exports.getProductByType = async ctx => {
         .lean({ virtuals: true });
     } else if (query.featured === 'true') {
       products = await Product.find({
-        productType: type,
+        ...baseQuery,
         featured: true,
       })
         .populate('reviewData', '-__v -id')
@@ -68,7 +70,7 @@ exports.getProductByType = async ctx => {
         .populate('categoryData', '-_id id name')
         .lean({ virtuals: true });
     } else if (query.topSellers === 'true') {
-      products = await Product.find({ productType: type })
+      products = await Product.find(baseQuery)
         .sort({ sellCount: -1 })
         .limit(8)
         .populate('reviewData', '-__v -id')
@@ -76,7 +78,7 @@ exports.getProductByType = async ctx => {
         .populate('categoryData', '-_id id name')
         .lean({ virtuals: true });
     } else {
-      products = await Product.find({ productType: type })
+      products = await Product.find(baseQuery)
         .populate('reviewData', '-__v -id')
         .populate('brandData', '-_id id name')
         .populate('categoryData', '-_id id name')
