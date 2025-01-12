@@ -27,6 +27,8 @@ const Logo = styled.img({
   marginLeft: 'auto',
   marginRight: 'auto',
   marginBottom: 24,
+  width: '164px',
+  height: '35px'
 });
 
 const Version = styled.div({

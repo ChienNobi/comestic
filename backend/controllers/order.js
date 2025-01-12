@@ -1,5 +1,5 @@
 const Order = require('../models/order');
-const {startSession} = require("mongoose");
+// const {startSession} = require("mongoose");
 const Products = require("../models/product");
 const {PRODUCT_STATUSES} = require("../commons/constants");
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
@@ -114,12 +114,12 @@ exports.getOrder = async ctx => {
 };
 
 exports.createOrder = async ctx => {
-  const session = await startSession();
-  session.startTransaction();
+  // const session = await startSession();
+  // session.startTransaction();
   try {
     const cart = ctx.request.body.cart;
     for (const item of cart) {
-      const product = await Products.findById(item._id).session(session);
+      const product = await Products.findById(item._id);
       if (!product) {
         console.log(`Product with ID ${item._id} not found`);
         throw new Error('Product not found');
@@ -134,14 +134,14 @@ exports.createOrder = async ctx => {
       if(product.quantity === 0) {
         product.status = PRODUCT_STATUSES.OUT_OF_STOCK;
       }
-      await product.save({ session });
+      await product.save();
     }
 
     const order = new Order(ctx.request.body);
-    await order.save({ session });
+    await order.save();
 
-    await session.commitTransaction();
-    session.endSession();
+    // await session.commitTransaction();
+    // session.endSession();
 
     ctx.body = {
       success: true,
@@ -149,10 +149,10 @@ exports.createOrder = async ctx => {
       order: order,
     };
   } catch (err) {
-    if (session.inTransaction()) {
-      await session.abortTransaction();
-    }
-    session.endSession();
+    // if (session.inTransaction()) {
+    //   await session.abortTransaction();
+    // }
+    // session.endSession();
     ctx.throw(500, err);
   }
 };

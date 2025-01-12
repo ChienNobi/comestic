@@ -60,8 +60,8 @@ const SingleOrder = ({ params }) => {
                     <div className="invoice__header pb-20">
                       <div className="row align-items-center">
                         <div className="col-md-4 col-sm-6">
-                          <div className="invoice__left">
-                            <Image src={logo} alt="logo" />
+                          <div className="invoice__left" style={{width: '200px'}}>
+                            <Image src={logo} alt="logo" width={200} height={35} />
                           </div>
                         </div>
                         <div className="col-md-8 col-sm-6">
